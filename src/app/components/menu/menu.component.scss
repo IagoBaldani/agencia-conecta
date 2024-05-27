@@ -13,6 +13,14 @@
   border-right: 0.1em solid var(--grey-text);
 }
 
+.upper-part{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 3em;
+}
+
 .logo-menu{
   display: flex;
   align-items: center;
