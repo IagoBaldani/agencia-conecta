@@ -1,0 +1,33 @@
+<div class="container">
+  <app-menu pagina="calculadora"></app-menu>
+
+  <div class="container-principal">
+    <h2> Calculadora de porcentagem</h2>
+
+    <div class="box-calculadora">
+      <div class="input-container">
+        <label for="valor"> Valor total em R$ </label>
+        <input type="text" id="valor" placeholder="9999,99" [(ngModel)]="valor" mask="separator,2" thousandSeparator="." decimalMarker=",">
+      </div>
+
+      <div class="input-container">
+        <label for="porcentagem"> Porcentagem (1% a 99%) </label>
+        <input type="number" id="porcentagem" placeholder="99%" [(ngModel)]="porcentagem" max="99" min="1">
+      </div>
+
+      <div class="button-container">
+        <input class="submit-button" type="button" value="CALCULAR" (click)="calcular()">
+      </div>
+    </div>
+    <div class="box-cards">
+      <div class="card">
+        <span class="description"> Valor do Acessor</span>
+        <span class="value value-acessor"> R$ {{valorAcessor}}</span>
+      </div>
+      <div class="card">
+        <span class="description"> Valor do influenciador</span>
+        <span class="value"> R$ {{valorInfluenciador}}</span>
+      </div>
+    </div>
+  </div>
+</div>

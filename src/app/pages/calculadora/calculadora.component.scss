@@ -1,0 +1,105 @@
+.container{
+  background-color: var(--grey-background);
+  display: flex;
+}
+
+.container-principal{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3em;
+}
+
+.container-principal h2{
+  color: var(--purple);
+}
+
+.box-calculadora{
+  width: 40em;
+  background-color: white;
+  box-shadow: 5px 0px 16px -3px rgba(153,153,153,1);
+  border-radius: 1em;
+  border-left: var(--purple) 0.35em solid;
+  margin-bottom: 1.5em;
+
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 2em;
+  padding-left: 2em;
+}
+
+.input-container{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin-bottom: 2em;
+}
+
+.input-container label{
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  font-size: 0.85em;
+  color: var(--dark-grey-text);
+}
+
+.input-container input{
+  color: var(--dark-grey-text);
+  border-radius: 0.4em;
+  border: 1px solid var(--dark-grey-text);
+  background-color: var(--grey-background);
+  padding: 1.2em;
+}
+
+.submit-button{
+  background-color: var(--purple);
+  border-radius: 0.75em;
+  border: 0;
+  padding: 1.2em;
+  color: white;
+  font-weight: 700;
+  font-size: 1em;
+  transition: all linear 0.2s;
+  cursor: pointer;
+  margin-bottom: 1em;
+}
+
+.submit-button:hover{
+  background-color: var(--dark-purple);
+}
+
+.box-cards{
+  display: flex;
+  gap: 1em;
+}
+
+.card{
+  background-color: var(--purple);
+  height: 7.5em;
+  width: 15em;
+  border-radius: 1em;
+  box-shadow: 5px 0px 16px -3px rgba(153,153,153,1);
+
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  justify-content: space-between;
+  color: white;
+}
+
+.card .description{
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+.card .value{
+  font-weight:600;
+  font-size: 1.7em;
+}
+
+.card .value-acessor{
+  color: var(--green);
+}
+
+

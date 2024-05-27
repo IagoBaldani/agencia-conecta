@@ -7,28 +7,28 @@
 
     <div class="options-menu">
       <a href="/influenciadores">
-        <div class="option is-selected">
+        <div class="option" [ngClass]="{'is-selected': isInfluenciadores}">
           <span class="material-symbols-rounded"> contacts </span>
           Influenciadores
         </div>
       </a>
 
       <a href="/servicos">
-        <div class="option">
+        <div class="option" [ngClass]="{'is-selected': isServicos}">
           <span class="material-symbols-rounded"> wallet </span>
           Serviços
         </div>
       </a>
 
       <a href="/financas">
-        <div class="option">
+        <div class="option" [ngClass]="{'is-selected': isFinancas}">
           <span class="material-symbols-rounded"> analytics </span>
           Finanças
         </div>
       </a>
 
       <a href="/calculadora">
-        <div class="option">
+        <div class="option" [ngClass]="{'is-selected': isCalculadora}">
           <span class="material-symbols-rounded"> calculate </span>
           Calculadora de %
         </div>

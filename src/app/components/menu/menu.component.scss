@@ -46,6 +46,7 @@
 .options-menu {
   display: flex;
   flex-direction: column;
+  gap: 1em;
   width: 90%;
 }
 
@@ -55,8 +56,6 @@
   display: flex;
   align-items: center;
   gap: 0.5em;
-  padding-bottom: 0.5em;
-  padding-top: 0.5em;
   transition: all 2ms linear;
 }
 
