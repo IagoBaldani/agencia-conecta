@@ -1,7 +1,6 @@
 .container{
-  background: url("/assets/images/background-login.png") no-repeat;
   background-size: contain;
-  background-color: var(--purple);
+  background: var(--purple) url("../../../assets/images/background-login.png") no-repeat;
 }
 
 .main {
