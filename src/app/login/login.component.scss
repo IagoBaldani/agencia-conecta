@@ -1,0 +1,113 @@
+.container{
+  background: url("/assets/images/background-login.png") no-repeat;
+  background-size: contain;
+  background-color: var(--purple);
+}
+
+.main {
+  height: 94vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.container .logo-box{
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 8em;
+}
+
+.logo-box img{
+  height: 3em;
+  margin-bottom: 5em;
+}
+
+.logo-box h1{
+  font-size: 1.75em;
+  margin-bottom: 0;
+}
+
+.logo-box p{
+  font-size: large;
+}
+
+.container .form{
+  height: 24em;
+  width: 30em;
+  background-color: var(--grey-background);
+  border-radius: 1em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  padding: 2em;
+}
+
+.form .input-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-container label{
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  font-size: 0.85em;
+  color: var(--dark-grey-text);
+}
+
+.input-container input{
+  color: var(--dark-grey-text);
+  border-radius: 0.4em;
+  border: 1px solid var(--dark-grey-text);
+  background-color: var(--grey-background);
+  padding: 1.2em;
+}
+
+.input-container input::placeholder{
+  color: var(--dark-grey-text);
+  font-size: 1.1em;
+}
+
+.button-container{
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-container a{
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+.form .submit-button{
+  background-color: var(--dark-purple);
+  border-radius: 0.75em;
+  border: 0;
+  padding: 1.2em;
+  color: white;
+  font-weight: 700;
+  font-size: 1em;
+  transition: all linear 0.2s;
+  cursor: pointer;
+}
+
+.form .submit-button:hover{
+  background-color: var(--purple);
+}
+
+.footer{
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8em;
+}
+
