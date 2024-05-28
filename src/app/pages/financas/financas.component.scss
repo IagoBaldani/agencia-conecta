@@ -1,0 +1,139 @@
+.container{
+  background-color: var(--grey-background);
+  display: flex;
+}
+
+a{
+  text-decoration: none;
+}
+
+.container-principal{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.container-principal h2{
+  color: var(--purple);
+}
+
+.box-cards{
+  display: flex;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.card{
+  background-color: white;
+  height: 7em;
+  width: 13em;
+  border-radius: 1em;
+  box-shadow: 5px 0px 16px -3px rgba(153,153,153,1);
+  display: flex;
+  flex-direction: column;
+  padding: 1.2em;
+  justify-content: space-between;
+  color: var(--purple);
+  border-left: var(--purple) 0.4em solid;
+}
+
+.card .description{
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.card .value{
+  font-weight:600;
+  font-size: 1.4em;
+  color: var(--green);
+}
+
+.box-inputs{
+  display: flex;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.box-inputs .data-input{
+  color: var(--grey-text);
+  border-radius: 0.4em;
+  border: 2px solid var(--grey-text);
+  background-color: var(--grey-background);
+  padding: 1em;
+}
+
+.box-inputs .data-input::placeholder{
+  color: var(--grey-text);
+  font-size: 0.8em;
+}
+
+.submit-button{
+  background-color: var(--purple);
+  border-radius: 0.75em;
+  border: 0;
+  padding: 1em;
+  color: white;
+  font-weight: 700;
+  font-size: 0.8em;
+  transition: all linear 0.2s;
+  cursor: pointer;
+}
+
+.submit-button:hover{
+  background-color: var(--dark-purple);
+}
+
+.box-cards-financas{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.card-financas{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--purple);
+  color: white;
+  padding: 1em;
+  gap: 4em;
+  border-radius: 0.5em;
+  box-shadow: 5px 0px 16px -3px rgba(153,153,153,1);
+}
+
+.upper-part{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.nome-influenciador{
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.lower-part{
+  display: flex;
+  justify-content: space-between;
+}
+
+.lower-part-left, .lower-part-right{
+  display: flex;
+  flex-direction: column;
+}
+
+.lower-part-right{
+  align-items: flex-end;
+}
+
+.value{
+  font-size: 2.5em;
+  color: var(--green);
+  font-weight: 700;
+}
+

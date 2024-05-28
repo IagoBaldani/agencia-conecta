@@ -16,16 +16,16 @@ a{
   padding-right: 3em;
 }
 
+.container-principal h2{
+  color: var(--purple);
+}
+
 .grid-cards-influenciadores{
   display: grid;
   width: 100%;
   grid-template-columns: repeat(7, 1fr);
   grid-row-gap: 1em;
   margin-bottom: 2em;
-}
-
-.container-principal h2{
-  color: var(--purple);
 }
 
 .card-influenciador, .card-add-influenciador{
