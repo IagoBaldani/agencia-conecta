@@ -1,0 +1,94 @@
+<div class="container">
+  <app-menu pagina="servicos"></app-menu>
+
+  <div class="container-principal">
+    <h2 *ngIf="this.tipoPagina === 'cadastrar'"> Cadastrar serviço</h2>
+    <h2 *ngIf="this.tipoPagina === 'visualizar'"> Visualizar serviço</h2>
+    <h2 *ngIf="this.tipoPagina === 'alterar'"> Alterar serviço</h2>
+
+    <div class="box-form">
+      <div class="input-row">
+        <div class="input-container">
+          <label for="nome-empresa"> Nome da empresa </label>
+          <input class="input" type="text" id="nome-empresa" placeholder="O nome da empresa contratante">
+        </div>
+        <div class="input-container">
+          <label for="influenciador"> Influenciador </label>
+          <select id="influenciador" name="influenciador" class="input">
+            <option value="default"> Influenciador(a) </option>
+          </select>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <label for="celular"> Celular contratante </label>
+          <input class="input" type="text" id="celular" placeholder="(XX) XXXXX-XXXX">
+        </div>
+        <div class="input-container">
+          <label for="email"> Email contratante </label>
+          <input class="input" type="email" id="email" placeholder="exemplo@exemplo.com.br">
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <label for="proposta"> Proposta do serviço </label>
+          <input class="input" type="text" id="proposta">
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <label for="data-inicio"> Data de inicio </label>
+          <input class="input" type="date" id="data-inicio" placeholder="DD/MM/YYYY">
+        </div>
+        <div class="input-container">
+          <label for="data-fim"> Data do fim </label>
+          <input class="input" type="date" id="data-fim" placeholder="DD/MM/YYYY">
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <label for="porcentagem"> Porcentagem (1% a 99%) </label>
+          <input class="input" type="number" id="porcentagem" placeholder="%" min="1" max="99">
+        </div>
+        <div class="input-container">
+          <label for="valor"> Valor em R$ </label>
+          <input class="input" type="text" id="valor" placeholder="9999,99" mask="separator,2" thousandSeparator="." decimalMarker=",">
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <label for="forma-pagamento"> Forma de pagamento </label>
+          <input class="input" type="text" id="forma-pagamento">
+        </div>
+      </div>
+      <div class="input-row row-checkbox">
+        <div class="input-container-checkbox">
+          <label>
+            <input class="input" type="checkbox" [value]="'uso-de-imagem'">
+            Uso de imagem
+          </label>
+        </div>
+        <div class="input-container-checkbox">
+          <label>
+            <input class="input" type="checkbox" [value]="'impulsionamento'">
+            Impulsionamento
+          </label>
+        </div>
+        <div class="input-container-checkbox">
+          <label>
+            <input class="input" type="checkbox" [value]="'exclusividade'">
+            Exclusividade
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <input *ngIf="tipoPagina === 'cadastrar'" class="submit-button" type="button" value="CADASTRAR" (click)="console.log('teste')">
+      <input class="submit-button" type="button" value="ALTERAR" (click)="console.log('teste')">
+      <input class="submit-button finalizar" type="button" value="FINALIZAR" (click)="console.log('teste')">
+      <input class="submit-button excluir" type="button" value="EXCLUIR" (click)="console.log('teste')">
+    </div>
+  </div>
+</div>
+

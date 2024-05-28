@@ -1,0 +1,135 @@
+.container{
+  background-color: var(--grey-background);
+  display: flex;
+}
+
+a{
+  text-decoration: none;
+}
+
+.container-principal{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.container-principal h2{
+  color: var(--purple);
+}
+
+.box-inputs{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin-bottom: 2em;
+}
+
+.box-inputs-left-part{
+  display: flex;
+  gap: 1em;
+}
+
+.box-inputs .data-input{
+  color: var(--grey-text);
+  border-radius: 0.4em;
+  border: 2px solid var(--grey-text);
+  background-color: var(--grey-background);
+  padding: 1em;
+}
+
+.box-inputs .data-input::placeholder{
+  color: var(--grey-text);
+  font-size: 0.8em;
+}
+
+.submit-button, .button-cadastrar-servico{
+  background-color: var(--purple);
+  border-radius: 0.75em;
+  border: 0;
+  padding: 1em;
+  color: white;
+  font-weight: 700;
+  font-size: 0.8em;
+  transition: all linear 0.2s;
+  cursor: pointer;
+}
+
+.submit-button:hover, .button-cadastrar-servico:hover{
+  background-color: var(--dark-purple);
+}
+
+.box-cards-servicos{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.card-servicos{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--purple);
+  color: white;
+  padding: 1em;
+  gap: 3em;
+  border-radius: 0.5em;
+  box-shadow: 5px 0px 16px -3px rgba(153,153,153,1);
+}
+
+.upper-part, .lower-part{
+  display: flex;
+  justify-content: space-between;
+}
+
+.upper-part-left, .upper-part-right{
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.nome-empresa, .value{
+  font-size: 1.8em;
+}
+
+.nome-influenciador{
+  font-size: 1.3em;
+  font-weight: 500;
+  color: var(--light-pink);
+}
+
+.value, .status{
+  font-weight: 600;
+  color: var(--green);
+}
+
+.upper-part-right{
+  align-items: flex-end;
+}
+
+.lower-part{
+  align-items: center;
+}
+
+.lower-part-left{
+  display: flex;
+  gap: 1em;
+}
+
+.tag{
+  background-color: var(--dark-purple);
+  padding: 0.5em;
+  border-radius: 0.2em;
+}
+
+.status{
+  font-size: 1.5em;
+}
+
+
+

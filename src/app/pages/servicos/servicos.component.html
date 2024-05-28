@@ -1,1 +1,57 @@
-<p>servicos works!</p>
+<div class="container">
+  <app-menu pagina="servicos"></app-menu>
+
+  <div class="container-principal">
+    <h2> Serviços </h2>
+
+    <div class="box-inputs">
+      <form class="box-inputs-left-part">
+        <select id="influenciadores" name="influenciadores" class="data-input">
+          <option value="default">Influenciador(a)</option>
+        </select>
+        <select id="status" name="status" class="data-input">
+          <option value="ativo">Ativo</option>
+          <option value="inativo">Inativo</option>
+        </select>
+
+        <input class="submit-button" type="button" value="PESQUISAR">
+      </form>
+
+      <a href="/cadastrar-visualizar-servico/cadastrar">
+        <span class="button-cadastrar-servico">
+          CADASTRAR NOVO SERVIÇO
+        </span>
+      </a>
+    </div>
+
+    <div class="box-cards-servicos">
+      <a href="/cadastrar-visualizar-servico/visualizar">
+        <div class="card-servicos">
+          <div class="upper-part">
+            <div class="upper-part-left">
+              <span class="nome-empresa"> BraBet - Apostas Esportivas </span>
+              <span class="nome-influenciador"> Julie Mendes </span>
+            </div>
+            <div class="upper-part-right">
+              <span class="value"> R$3000,00</span>
+              <span> 14/06/2022 - 20/06/2022</span>
+            </div>
+          </div>
+          <span>
+          4 stories - 3 vezes na semana - Destaques
+        </span>
+          <div class="lower-part">
+            <div class="lower-part-left">
+              <span class="tag"> Uso de Imagem  </span>
+              <span class="tag"> Impulsionamento </span>
+            </div>
+            <span class="status">
+            Ativo
+          </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
