@@ -16,7 +16,7 @@
 }
 
 .box-calculadora{
-  width: 40em;
+  width: 36.5em;
   background-color: white;
   box-shadow: 5px 0px 16px -3px rgba(153,153,153,1);
   border-radius: 1em;
@@ -41,15 +41,20 @@
   margin-bottom: 0.5em;
   font-weight: 600;
   font-size: 0.85em;
-  color: var(--dark-grey-text);
+  color: var(--grey-text);
 }
 
 .input-container input{
-  color: var(--dark-grey-text);
+  color: var(--grey-text);
   border-radius: 0.4em;
-  border: 1px solid var(--dark-grey-text);
-  background-color: var(--grey-background);
+  border: 2px solid var(--grey-text);
+  background-color: white;
   padding: 1.2em;
+}
+
+.input-container input::placeholder{
+  color: var(--grey-text);
+  font-size: 1.1em;
 }
 
 .submit-button{

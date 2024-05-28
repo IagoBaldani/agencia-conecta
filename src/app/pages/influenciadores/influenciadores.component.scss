@@ -1,3 +1,100 @@
 .container{
   background-color: var(--grey-background);
+  display: flex;
 }
+
+a{
+  text-decoration: none;
+}
+
+.container-principal{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.grid-cards-influenciadores{
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  grid-row-gap: 1em;
+  margin-bottom: 2em;
+}
+
+.container-principal h2{
+  color: var(--purple);
+}
+
+.card-influenciador, .card-add-influenciador{
+  height: 10em;
+  max-width: 7em;
+  background-color: var(--purple);
+  color: white;
+  padding: 1em;
+  display: flex;
+  border-radius: 1em;
+  box-shadow: 5px 0px 16px -3px rgba(153,153,153,1);
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-add-influenciador{
+  background-color: var(--dark-purple);
+  align-items: center;
+  text-align: center;
+}
+
+.card-add-influenciador .material-symbols-rounded{
+  margin-top: 0.5em;
+  font-size: 2.5em;
+}
+
+.nome-influenciador{
+  font-weight: 600;
+  font-size: 1.3em;
+}
+
+.cidade-status{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.is-ativo{
+  color: var(--green);
+}
+
+.box-cards{
+  display: flex;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.card{
+  background-color: white;
+  height: 7em;
+  width: 13em;
+  border-radius: 1em;
+  box-shadow: 5px 0px 16px -3px rgba(153,153,153,1);
+  display: flex;
+  flex-direction: column;
+  padding: 1.2em;
+  justify-content: space-between;
+  color: var(--purple);
+  border-left: var(--purple) 0.4em solid;
+}
+
+.card .description{
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.card .value{
+  font-weight:600;
+  font-size: 1.4em;
+}
+
+
