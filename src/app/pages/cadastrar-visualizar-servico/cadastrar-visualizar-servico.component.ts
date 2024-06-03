@@ -32,6 +32,4 @@ export class CadastrarVisualizarServicoComponent implements OnInit{
       this.tipoPagina = this.route.snapshot.paramMap.get('tipoPagina');
     }
   }
-
-  protected readonly console = console;
 }
