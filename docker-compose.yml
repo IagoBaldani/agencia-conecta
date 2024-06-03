@@ -1,0 +1,5 @@
+services:
+  api:
+    image: agencia-conecta-frontend
+    ports:
+      - "4200:4200"
