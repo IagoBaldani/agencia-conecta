@@ -61,13 +61,13 @@
 }
 
 .input::placeholder{
-  color: var(--purple);
+  color: var(--grey-text);
 }
 
-.input[type="date"] {
+.input[type="date"], .input option{
   font-family: Inter, sans-serif;
+  color: var(--grey-text);
 }
-
 
 .row-checkbox{
   margin-top: 0.75em;

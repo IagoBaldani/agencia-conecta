@@ -61,11 +61,12 @@
 }
 
 .input::placeholder{
-  color: var(--purple);
+  color: var(--grey-text);
 }
 
 .input[type="date"] {
   font-family: Inter, sans-serif;
+  color: var(--grey-text);
 }
 
 
