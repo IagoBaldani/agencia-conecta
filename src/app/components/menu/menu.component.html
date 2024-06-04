@@ -5,7 +5,7 @@
       Todos os direitos reservados
     </div>
 
-    <div class="options-menu">
+    <nav class="options-menu">
       <a href="/influenciadores">
         <div class="option" [ngClass]="{'is-selected': isInfluenciadores}">
           <span class="material-symbols-rounded"> contacts </span>
@@ -33,7 +33,7 @@
           Calculadora de %
         </div>
       </a>
-    </div>
+    </nav>
   </div>
 
   <a href="/login">
@@ -44,3 +44,17 @@
   </a>
 
 </div>
+
+<app-menu-mobile-fullscreen [pagina]="pagina" [estaAberto]="menuMobileEstaAberto" (valueChange)="recebeValorDoComponenteFilho($event)"></app-menu-mobile-fullscreen>
+
+<div class="container-menu-mobile">
+    <div class="logo-menu-mobile">
+      <img [src]="'assets/images/logo-conecta.png'"/>
+    </div>
+
+    <div class="open-menu-button" (click)="toggleMenuMobileFullscreen()">
+          <span class="material-symbols-rounded"> menu </span>
+    </div>
+</div>
+
+

@@ -1,0 +1,50 @@
+<div class="container-menu-mobile-fullscreen" [ngClass]="{'display-flex': estaAberto}">
+  <div class="upper-menu-mobile-fullscreen">
+    <img [src]="'assets/images/logo-conecta.png'"/>
+  </div>
+
+  <nav class="options-menu-mobile-fullscreen">
+    <a href="/influenciadores">
+      <div class="option" [ngClass]="{'is-selected': isInfluenciadores}">
+        <span class="material-symbols-rounded"> contacts </span>
+        Influenciadores
+      </div>
+    </a>
+
+    <a href="/servicos">
+      <div class="option" [ngClass]="{'is-selected': isServicos}">
+        <span class="material-symbols-rounded"> wallet </span>
+        Serviços
+      </div>
+    </a>
+
+    <a href="/financas">
+      <div class="option" [ngClass]="{'is-selected': isFinancas}">
+        <span class="material-symbols-rounded"> analytics </span>
+        Finanças
+      </div>
+    </a>
+
+    <a href="/calculadora">
+      <div class="option" [ngClass]="{'is-selected': isCalculadora}">
+        <span class="material-symbols-rounded"> calculate </span>
+        Calculadora de %
+      </div>
+    </a>
+  </nav>
+
+  <div class="bottom-menu-mobile-fullscreen">
+    <a href="/login">
+      <div class="logout-menu-mobile-fullscreen">
+        <span class=" material-symbols-rounded"> logout </span>
+        Sair
+      </div>
+    </a>
+
+    <div class="button-close-menu-mobile-fullscreen" (click)="toggleMenuMobile()">
+      <span class=" material-symbols-rounded"> close </span>
+      Fechar menu
+    </div>
+  </div>
+
+</div>

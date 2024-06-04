@@ -3,10 +3,6 @@
   display: flex;
 }
 
-a{
-  text-decoration: none;
-}
-
 .container-principal{
   width: 100%;
   min-height: 100vh;
@@ -122,6 +118,9 @@ a{
 }
 
 .tag{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--dark-purple);
   padding: 0.5em;
   border-radius: 0.2em;
@@ -131,5 +130,67 @@ a{
   font-size: 1.5em;
 }
 
+@media(max-width: 1000px){
+  .box-inputs{
+    flex-direction: column;
+    gap: 2em;
+    align-items: flex-start;
+  }
+
+  .container-principal{
+    padding-right: 1em;
+    padding-left: 1em;
+  }
+
+  .upper-part{
+    flex-direction: column;
+    gap: 2em;
+  }
+
+  .upper-part-right{
+    align-items: flex-start;
+  }
+}
+
+@media(max-width: 800px){
+  .container{
+    flex-direction: column;
+  }
+
+  .container-principal{
+    min-height: 88vh;
+    width: unset;
+  }
+
+  .container-principal h2{
+    width: 90%;
+  }
+
+  .lower-part{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+  }
+
+  .lower-part-left{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 0.5em;
+  }
+}
+
+@media(max-width: 500px){
+  .box-inputs{
+    gap: 1em;
+  }
+
+  .box-inputs-left-part{
+    flex-direction: column;
+  }
+
+  .box-cards-servicos{
+    width: unset;
+  }
+}
 
 

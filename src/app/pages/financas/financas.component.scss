@@ -3,10 +3,6 @@
   display: flex;
 }
 
-a{
-  text-decoration: none;
-}
-
 .container-principal{
   width: 100%;
   min-height: 100vh;
@@ -135,5 +131,45 @@ a{
   font-size: 2.5em;
   color: var(--green);
   font-weight: 700;
+}
+
+@media(max-width: 1000px){
+  .container-principal{
+    padding-right: 1em;
+    padding-left: 1em;
+  }
+
+  .lower-part{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+  }
+
+  .lower-part-right{
+    align-items: flex-start;
+  }
+}
+
+@media(max-width: 800px){
+  .container{
+    flex-direction: column;
+  }
+
+  .container-principal{
+    min-height: 88vh;
+    width: unset;
+  }
+
+  .container-principal h2{
+    width: 90%;
+  }
+
+  .box-cards{
+    flex-direction: column;
+  }
+
+  .card{
+    width: 70%;
+  }
 }
 
