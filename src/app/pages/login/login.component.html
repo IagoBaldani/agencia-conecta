@@ -7,18 +7,20 @@
     </div>
     <form class="form">
         <div class="input-container">
-          <label for="usuario"> Usuário </label>
-          <input type="text" id="usuario" placeholder="Seu nome de usuário">
+          <label for="login"> Login </label>
+          <input type="text" id="login" placeholder="Seu login" [(ngModel)]="usuario.login" name="login">
         </div>
 
         <div class="input-container">
           <label for="senha"> Senha </label>
-          <input type="password" id="senha" placeholder="Sua senha">
+          <input type="password" id="senha" placeholder="Sua senha" [(ngModel)]="usuario.senha" name="senha">
         </div>
 
         <div class="button-container">
           <a href=""> Esqueceu sua senha? </a>
-          <input class="submit-button" type="button" value="ENTRAR">
+          <button class="submit-button" (click)="login()">
+            ENTRAR
+          </button>
         </div>
     </form>
   </div>

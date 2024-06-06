@@ -2,9 +2,15 @@
   <app-menu pagina="servicos"></app-menu>
 
   <div class="container-principal">
-    <h2 *ngIf="this.tipoPagina === 'cadastrar'"> Cadastrar serviço</h2>
-    <h2 *ngIf="this.tipoPagina === 'visualizar'"> Visualizar serviço</h2>
-    <h2 *ngIf="this.tipoPagina === 'alterar'"> Alterar serviço</h2>
+    <div class="box-title-status">
+      <h2 *ngIf="this.tipoPagina === 'cadastrar'"> Cadastrar serviço</h2>
+      <h2 *ngIf="this.tipoPagina === 'visualizar'"> Visualizar serviço</h2>
+      <h2 *ngIf="this.tipoPagina === 'alterar'"> Alterar serviço</h2>
+
+      <h2 *ngIf="this.tipoPagina === 'visualizar' && false" class="status-ativo"> Ativo </h2>
+      <h2 *ngIf="this.tipoPagina === 'visualizar'" class="status-finalizado"> Finalizado </h2>
+    </div>
+
 
     <div class="box-form">
       <div class="input-row">

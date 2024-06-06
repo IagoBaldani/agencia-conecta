@@ -133,3 +133,25 @@
   }
 }
 
+@media(max-width: 400px){
+
+  .container .form{
+    height: unset;
+    width: unset;
+    max-width: unset;
+    padding: 1em;
+  }
+
+  .form .input-container, .form .button-container{
+    width: 80%;
+  }
+
+  .form .button-container{
+    gap: 1em;
+  }
+
+  .footer{
+    font-size: 0.5em;
+  }
+}
+

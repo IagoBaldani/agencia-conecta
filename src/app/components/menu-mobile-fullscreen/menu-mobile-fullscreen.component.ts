@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgClass} from "@angular/common";
+import {UtilService} from "../../service/util.service";
 
 @Component({
   selector: 'app-menu-mobile-fullscreen',
@@ -13,12 +14,15 @@ import {NgClass} from "@angular/common";
 export class MenuMobileFullscreenComponent implements OnInit{
   @Input() pagina: string = '';
   @Input() estaAberto: boolean = false;
-  @Output() valueChange = new EventEmitter<string>();
+  @Output() valueChange = new EventEmitter<boolean>();
 
   isInfluenciadores: boolean = false;
   isServicos: boolean = false;
   isFinancas: boolean = false;
   isCalculadora: boolean = false;
+
+  constructor(public utilService: UtilService) {
+  }
 
   ngOnInit(): void {
     this.verificaPagina();
@@ -34,7 +38,7 @@ export class MenuMobileFullscreenComponent implements OnInit{
   toggleMenuMobile(){
     this.estaAberto = !this.estaAberto;
 
-    this.valueChange.emit(this.estaAberto ? 'S' : 'N');
+    this.valueChange.emit(this.estaAberto);
   }
 
 }

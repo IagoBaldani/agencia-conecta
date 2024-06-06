@@ -120,6 +120,10 @@
     width: 80%;
   }
 
+  .box-cards{
+    flex-direction: column;
+  }
+
   .card{
     max-width: 11em;
   }
@@ -141,10 +145,6 @@
 
   .input-container{
     width: 80%;
-  }
-
-  .box-cards{
-    flex-direction: column;
   }
 
   .card{
