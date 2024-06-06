@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {AuthApiService} from "../../service/auth-api.service";
-import {Usuario} from "../../model/usuario.model";
+import {UsuarioModel} from "../../model/usuario.model";
 import {FormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AngularToastifyModule, ToastService} from "angular-toastify";
@@ -19,7 +19,7 @@ import {UtilService} from "../../service/util.service";
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit{
-  usuario: Usuario = new Usuario();
+  usuario: UsuarioModel = new UsuarioModel();
 
   constructor(private authApiService: AuthApiService, private route: Router,
               private toastService: ToastService, private utilService: UtilService) {

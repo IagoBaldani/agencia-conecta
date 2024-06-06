@@ -30,6 +30,8 @@ export class UtilService {
           this.retornaParaPaginaDeLogin();
         })
     }
+
+    return token;
   }
 
   verificaVazioOuNulo(valorASerChecado: string | null): boolean{
