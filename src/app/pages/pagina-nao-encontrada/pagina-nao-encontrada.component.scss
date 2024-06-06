@@ -1,0 +1,77 @@
+.container{
+  background-size: contain;
+  background: var(--purple) url("../../../assets/images/background-login.png") no-repeat;
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15em;
+
+  color: white;
+}
+
+.upper-box{
+  margin-top: 2em;
+}
+
+.upper-box img{
+  height: 3em;
+}
+
+.bottom-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2em;
+}
+
+.bottom-box h1, .bottom-box p{
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
+}
+
+.bottom-box a{
+  margin-top: 1em;
+  font-size: 0.6em !important;
+  font-weight: 600;
+  color: white;
+  background-color: var(--pink);
+  padding: 0.6em;
+  border-radius: 0.6em;
+  transition: all linear 0.2s;
+}
+
+.bottom-box a:hover{
+  background-color: var(--dark-purple);
+}
+
+@media(max-width: 1000px){
+  .container{
+    gap: 20em;
+  }
+}
+
+@media(max-width: 500px){
+  .container{
+    gap: 15em;
+  }
+
+  .upper-box img{
+    height: 2em;
+  }
+
+  .bottom-box{
+    font-size: 1.4em;
+  }
+}
+
+@media(max-height: 670px){
+  .container{
+    gap: 12em;
+  }
+}
+
+

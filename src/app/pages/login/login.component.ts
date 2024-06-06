@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {AuthApiService} from "../../service/auth-api.service";
 import {Usuario} from "../../model/usuario.model";
@@ -18,12 +18,19 @@ import {UtilService} from "../../service/util.service";
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   usuario: Usuario = new Usuario();
 
   constructor(private authApiService: AuthApiService, private route: Router,
               private toastService: ToastService, private utilService: UtilService) {
   }
+
+  ngOnInit(): void {
+    if(localStorage.getItem("tokenApi") !== null){
+      localStorage.removeItem("tokenApi")
+    }
+  }
+
 
   login(){
     if(this.utilService.verificaVazioOuNulo(this.usuario.login) || this.utilService.verificaVazioOuNulo(this.usuario.senha)){
@@ -39,7 +46,4 @@ export class LoginComponent {
       })
     }
   }
-
-
-
 }
