@@ -20,5 +20,22 @@ a:-webkit-any-link{
   text-decoration: none;
 }
 
+.container{
+  background-color: var(--grey-background);
+  display: flex;
+}
+
+.container-principal{
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.container-principal h2{
+  color: var(--purple);
+}
 
 

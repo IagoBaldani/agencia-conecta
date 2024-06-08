@@ -1,16 +1,5 @@
-.container{
-  background-color: var(--grey-background);
-  display: flex;
-}
-
 .container-principal{
-  min-height: 100vh;
   min-width: 60%;
-  display: flex;
-  flex-direction: column;
-  padding-left: 3em;
-  padding-right: 3em;
-  color: var(--purple);
 }
 
 .box-title-status{
