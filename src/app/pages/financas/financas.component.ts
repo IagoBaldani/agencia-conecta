@@ -74,10 +74,6 @@ export class FinancasComponent implements OnInit{
 
       this.listaCardFinancasDescricao.push(cardFinancasDescricaoModel);
     })
-
-    if(this.listaCardFinancasDescricao.length === 0){
-
-    }
   }
 
   pesquisaPorData(){

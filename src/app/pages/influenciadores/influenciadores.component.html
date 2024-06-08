@@ -5,15 +5,23 @@
     <h2> Influenciadores </h2>
 
     <div class="grid-cards-influenciadores">
-      <a href="/cadastrar-visualizar-influenciador/visualizar">
+      <a href="/cadastrar-visualizar-influenciador/visualizar?id={{influenciador.id}}" *ngFor="let influenciador of listaInfluenciadorSimplificado">
         <div class="card-influenciador">
-          <span class="nome-influenciador"> Sol Cardoso </span>
+          <span class="nome-influenciador"> {{influenciador.nome}} </span>
           <div class="cidade-status">
-            <span> São Paulo / SP </span>
-            <span class="status is-ativo"> Ativo </span>
+            <span> {{influenciador.cidadeEstado}} </span>
+            <span class="status status-ativo" *ngIf="influenciador.ativo"> Ativo </span>
+            <span class="status status-inativo" *ngElse> Inativo </span>
           </div>
         </div>
       </a>
+
+      <div class="card-influenciador vazio" *ngIf="listaInfluenciadorSimplificado.length === 0">
+        <span class="material-symbols-rounded">
+          sentiment_dissatisfied
+        </span>
+        Nenhum influenciador cadastrado
+      </div>
 
       <a href="/cadastrar-visualizar-influenciador/cadastrar">
         <div class="card-add-influenciador">
