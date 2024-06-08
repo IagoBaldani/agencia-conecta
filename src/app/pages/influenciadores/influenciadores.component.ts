@@ -24,16 +24,14 @@ export class InfluenciadoresComponent implements OnInit {
   ngOnInit(): void {
     let token = this.utilService.validarToken();
 
-    if (token !== null) {
-      this.cardApiService.getCardInfluenciadores(token).subscribe(response => {
-        this.preencheModelCardInfluenciadores(response.retorno);
-        console.log(this.cardInfluenciadores);
+    this.cardApiService.getCardInfluenciadores(token).subscribe(response => {
+      this.preencheModelCardInfluenciadores(response.retorno);
+      console.log(this.cardInfluenciadores);
 
-      }, responseError => {
-        console.log(responseError);
-        this.toastService.error(responseError.error.mensagem);
-      });
-    }
+    }, responseError => {
+      console.log(responseError);
+      this.toastService.error(responseError.error.mensagem);
+    });
   }
 
   preencheModelCardInfluenciadores(retorno: any) {

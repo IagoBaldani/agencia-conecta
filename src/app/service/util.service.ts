@@ -16,22 +16,22 @@ export class UtilService {
   }
 
   validarToken(){
-    if(localStorage.getItem("tokenApi") === null){
-      this.retornaParaPaginaDeLogin();
-    }
-
     let token = localStorage.getItem("tokenApi");
 
-    if(token !== null){
+    if(token === null){
+      this.retornaParaPaginaDeLogin();
+      return "";
+    }
+    else{
       this.authApiService.validarToken(token).subscribe(response => {
           console.log(response.mensagem);
         },
         error => {
           this.retornaParaPaginaDeLogin();
         })
-    }
 
-    return token;
+      return token;
+    }
   }
 
   verificaVazioOuNulo(valorASerChecado: string | null): boolean{
