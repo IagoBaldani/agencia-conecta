@@ -14,27 +14,36 @@
         <span class="value"> R$ {{cardFinancasTotais.totalContratos}}  </span>
       </div>
     </div>
-    <form class="box-inputs">
-      <input class="data-input" type="month" name="mes">
-      <input class="submit-button" type="button" value="PESQUISAR">
+    <form>
+      <label for="mesAno"> Pesquisar por mês/ano </label>
+      <div class="box-inputs">
+        <input class="data-input" type="month" name="mesAno" id="mesAno" [(ngModel)]="mesAno">
+        <input class="submit-button" type="button" value="PESQUISAR" (click)="pesquisaPorData()">
+      </div>
     </form>
 
     <div class="box-cards-financas">
-      <div class="card-financas">
+      <div class="card-financas" *ngFor="let cardFinancasDescricao of listaCardFinancasDescricao">
         <div class="upper-part">
-          <span class="nome-influenciador">Sol Cardoso</span>
-          <span>5 serviços</span>
+          <span class="nome-influenciador"> {{cardFinancasDescricao.nomeInfluenciador}} </span>
+          <span> {{cardFinancasDescricao.qtdServicos}} serviços</span>
         </div>
         <div class="lower-part">
           <div class="lower-part-left">
-            <span class="description"> Ganhos influenciadora: </span>
-            <span class="value"> R$15.000,00 </span>
+            <span class="description"> Ganhos influenciador(a): </span>
+            <span class="value"> R${{cardFinancasDescricao.valorInfluenciador}}  </span>
           </div>
           <div class="lower-part-right">
-            <span class="description"> Ganhos acessora: </span>
-            <span class="value"> R$15.000,00 </span>
+            <span class="description"> Ganhos acessor(a): </span>
+            <span class="value"> R${{cardFinancasDescricao.valorAcessor}}  </span>
           </div>
         </div>
+      </div>
+      <div class="card-financas vazio" *ngIf="this.listaCardFinancasDescricao.length === 0">
+        <span class="material-symbols-rounded">
+          sentiment_dissatisfied
+        </span>
+        Não há nenhum serviço registrado para o mês/ano informado.
       </div>
     </div>
   </div>

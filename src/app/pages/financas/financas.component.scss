@@ -1,19 +1,5 @@
-.container{
-  background-color: var(--grey-background);
-  display: flex;
-}
-
 .container-principal{
   width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding-left: 3em;
-  padding-right: 3em;
-}
-
-.container-principal h2{
-  color: var(--purple);
 }
 
 .box-cards{
@@ -47,9 +33,15 @@
   color: var(--green);
 }
 
+form label{
+  color: var(--purple);
+  font-weight: 600;
+}
+
 .box-inputs{
   display: flex;
   gap: 1em;
+  margin-top: 1em;
   margin-bottom: 2em;
 }
 
@@ -100,6 +92,19 @@
   gap: 4em;
   border-radius: 0.5em;
   box-shadow: 5px 0px 16px -3px rgba(153,153,153,1);
+}
+
+.vazio{
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  font-weight: 400;
+  text-align: center;
+  min-height: 25.5vh;
+}
+
+.vazio span{
+  font-size: 3em;
 }
 
 .upper-part{
