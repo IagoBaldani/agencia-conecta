@@ -133,6 +133,10 @@
 }
 
 @media(max-width: 500px){
+  .container-principal{
+    max-height: 88vh;
+  }
+
   .box-title-status{
     flex-direction: column;
   }

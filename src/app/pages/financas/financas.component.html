@@ -7,11 +7,11 @@
     <div class="box-cards">
       <div class="card">
         <span class="description"> Ganhos do mês atual </span>
-        <span class="value"> R$ {{cardFinancasTotais.ganhosAcessor}} </span>
+        <span class="value" >  {{utilService.formataValoresEmReais(cardFinancasTotais.ganhosAcessor)}} </span>
       </div>
       <div class="card">
         <span class="description"> Total em contratos concluídos no mês atual </span>
-        <span class="value"> R$ {{cardFinancasTotais.totalContratos}}  </span>
+        <span class="value"> {{utilService.formataValoresEmReais(cardFinancasTotais.totalContratos)}}  </span>
       </div>
     </div>
     <form>
@@ -31,11 +31,11 @@
         <div class="lower-part">
           <div class="lower-part-left">
             <span class="description"> Ganhos influenciador(a): </span>
-            <span class="value"> R${{cardFinancasDescricao.valorInfluenciador}}  </span>
+            <span class="value"> {{utilService.formataValoresEmReais(cardFinancasDescricao.valorInfluenciador)}}  </span>
           </div>
           <div class="lower-part-right">
             <span class="description"> Ganhos acessor(a): </span>
-            <span class="value"> R${{cardFinancasDescricao.valorAcessor}}  </span>
+            <span class="value"> {{utilService.formataValoresEmReais(cardFinancasDescricao.valorAcessor)}}  </span>
           </div>
         </div>
       </div>

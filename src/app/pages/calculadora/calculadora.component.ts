@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {MenuComponent} from "../../components/menu/menu.component";
 import {FormsModule} from "@angular/forms";
 import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
+import {ToastService} from "angular-toastify";
+import {UtilService} from "../../service/util.service";
 
 @Component({
   selector: 'app-calculadora',
@@ -20,23 +22,22 @@ import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
 })
 export class CalculadoraComponent {
 
-  valor: number | null = null;
-  porcentagem: number | null = null;
-  valorAcessor: number | null = null;
-  valorInfluenciador: number | null = null;
+  valor: number = 0;
+  porcentagem: number = 0;
+  valorAcessor: number = 0;
+  valorInfluenciador: number = 0;
+
+  constructor(private toastService: ToastService, public utilService: UtilService) {
+  }
 
   calcular(){
-    if(this.valor !== null && this.porcentagem !== null){
+    if(!this.utilService.verificaVazioOuNulo(this.valor) && !this.utilService.verificaVazioOuNulo(this.porcentagem)){
       this.valorAcessor = this.valor * (this.porcentagem / 100);
 
       this.valorInfluenciador = this.valor - this.valorAcessor;
     }
-
-    if(this.valor == null){
-      alert("Favor informar o valor.")
-    }
-    if(this.porcentagem == null){
-      alert("Favor informar a porcentagem.")
+    else{
+      this.toastService.error("Favor informar o valor e a porcentagem.");
     }
   }
 

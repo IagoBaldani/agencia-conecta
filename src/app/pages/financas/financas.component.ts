@@ -27,7 +27,7 @@ export class FinancasComponent implements OnInit{
   private dataAtual: Date = new Date();
   private token = this.utilService.validarToken();
 
-  constructor(private utilService: UtilService, private cardApiService: CardApiService,
+  constructor(public utilService: UtilService, private cardApiService: CardApiService,
               private toastService: ToastService) {
   }
 

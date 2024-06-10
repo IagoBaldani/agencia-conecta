@@ -12,7 +12,7 @@
 
       <div class="input-container">
         <label for="porcentagem"> Porcentagem (1% a 99%) </label>
-        <input type="number" id="porcentagem" placeholder="99%" [(ngModel)]="porcentagem" max="99" min="1">
+        <input type="text" id="porcentagem" placeholder="99%" [(ngModel)]="porcentagem" mask="00">
       </div>
 
       <div class="button-container">
@@ -22,11 +22,11 @@
     <div class="box-cards">
       <div class="card">
         <span class="description"> Valor do Acessor</span>
-        <span class="value value-acessor"> R$ {{valorAcessor}}</span>
+        <span class="value value-acessor"> {{utilService.formataValoresEmReais(valorAcessor)}}</span>
       </div>
       <div class="card">
         <span class="description"> Valor do influenciador</span>
-        <span class="value"> R$ {{valorInfluenciador}}</span>
+        <span class="value"> {{utilService.formataValoresEmReais(valorInfluenciador)}}</span>
       </div>
     </div>
   </div>

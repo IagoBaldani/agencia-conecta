@@ -115,10 +115,6 @@
     width: 90%;
   }
 
-  .container-principal{
-    min-height: 88vh;
-  }
-
   .grid-cards-influenciadores{
     width: 70%;
     grid-template-columns: repeat(2, 1fr);
@@ -130,6 +126,12 @@
 
   .card{
     width: 70%;
+  }
+}
+
+@media(max-width: 500px){
+  .container-principal{
+    max-height: 88vh;
   }
 }
 

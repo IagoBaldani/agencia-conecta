@@ -127,7 +127,6 @@
   }
 
   .container-principal{
-    min-height: 88vh;
     padding-right: 1em;
     padding-left: 1em;
   }
@@ -145,6 +144,10 @@
 }
 
 @media(max-width: 500px){
+  .container-principal{
+    max-height: 88vh;
+  }
+
   .box-title-status{
     flex-direction: column;
   }

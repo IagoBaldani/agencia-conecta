@@ -166,6 +166,10 @@
 }
 
 @media(max-width: 500px){
+  .container-principal{
+    max-height: 88vh;
+  }
+
   .box-inputs{
     gap: 1em;
   }

@@ -31,15 +31,13 @@
 }
 
 .input-container input{
+  font-family: Inter, sans-serif;
   padding: 0.75em;
   font-size: 1em;
   border-radius: 0.5em;
-  border: var(--purple) 0.15em solid;
-}
-
-.input-container input:disabled{
+  border: var(--grey-background) 0.15em solid;
   background-color: var(--grey-background);
-  color: var(--dark-grey-text);
+  color: var(--purple);
 }
 
 .input-container input::placeholder{
@@ -138,6 +136,12 @@
     width: 70%;
     max-width: unset;
     padding: 2em;
+  }
+}
+
+@media(max-width: 500px){
+  .container-principal{
+    max-height: 88vh;
   }
 }
 

@@ -51,7 +51,17 @@ export class UtilService {
     }
   }
 
-  public verificaVazioOuNulo(valorASerChecado: string | null): boolean{
+  public formataValoresEmReais(valor: number): string{
+    let valorFormatado = valor.toFixed(2);
+
+    let [parteInteiros, parteDecimal] = valorFormatado.split('.');
+
+    let parteInteirosFormatada = parteInteiros.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    return `R$${parteInteirosFormatada},${parteDecimal}`;
+  }
+
+  public verificaVazioOuNulo(valorASerChecado: string | number | null): boolean{
     return valorASerChecado === "" || valorASerChecado === " " || valorASerChecado === null
   }
 }
