@@ -21,7 +21,7 @@ import {UtilService} from "../../service/util.service";
 export class LoginComponent implements OnInit{
   usuario: UsuarioModel = new UsuarioModel();
 
-  constructor(private authApiService: AuthApiService, private route: Router,
+  constructor(private authApiService: AuthApiService, private router: Router,
               private toastService: ToastService, private utilService: UtilService) {
   }
 
@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit{
     else{
       this.authApiService.auth(this.usuario).subscribe(response => {
         localStorage.setItem("tokenApi", response.retorno);
-        this.route.navigate(["/influenciadores"]);
+        this.router.navigate(["/influenciadores"]);
 
       }, responseError => {
-        this.toastService.error(responseError.error.mensagem);
+        this.utilService.tratarException(responseError);
       })
     }
   }

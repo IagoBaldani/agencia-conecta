@@ -10,7 +10,7 @@
 }
 
 body{
-  font-family: Inter, sans-serif;
+  font-family: Inter, sans-serif !important;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -39,11 +39,11 @@ a:-webkit-any-link{
 }
 
 .status-ativo{
-  color: var(--green)
+  color: var(--green);
 }
 
 .status-finalizado{
-  color: var(--pink)
+  color: var(--pink);
 }
 
 

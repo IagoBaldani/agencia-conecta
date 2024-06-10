@@ -37,8 +37,7 @@ export class InfluenciadoresComponent implements OnInit {
       this.preencheModelCardInfluenciadores(response.retorno);
 
     }, responseError => {
-      console.log(responseError);
-      this.toastService.error(responseError.error.mensagem);
+      this.utilService.tratarException(responseError);
     });
   }
 
@@ -47,8 +46,7 @@ export class InfluenciadoresComponent implements OnInit {
      this.preencheModelInfluenciadorSimplificado(response.retorno);
 
     }, responseError => {
-      console.log(responseError);
-      this.toastService.error(responseError.error.mensagem);
+      this.utilService.tratarException(responseError);
     });
   }
 

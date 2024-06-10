@@ -3,81 +3,100 @@
 
   <div class="container-principal">
     <div class="box-title-status">
-      <h2 *ngIf="this.tipoPagina === 'cadastrar'"> Cadastrar influenciador</h2>
-      <h2 *ngIf="this.tipoPagina === 'visualizar'"> Visualizar influenciador</h2>
-      <h2 *ngIf="this.tipoPagina === 'alterar'"> Alterar influenciador</h2>
+      <h2 *ngIf="isCadastrar"> Cadastrar influenciador</h2>
+      <h2 *ngIf="isVisualizar"> Visualizar influenciador</h2>
+      <h2 *ngIf="isAlterar"> Alterar influenciador</h2>
 
-      <h2 *ngIf="this.tipoPagina === 'visualizar' && false" class="status-ativo"> Ativo </h2>
-      <h2 *ngIf="this.tipoPagina === 'visualizar'" class="status-inativo"> Inativo </h2>
+      <h2 *ngIf="isVisualizar && influenciador.ativo" class="status-ativo"> Ativo </h2>
+      <h2 *ngIf="isVisualizar && !influenciador.ativo" class="status-inativo"> Inativo </h2>
     </div>
 
     <div class="box-form">
       <div class="input-row">
         <div class="input-container">
-          <label for="nome"> Nome completo </label>
-          <input class="input" type="text" id="nome" placeholder="O nome do influenciador">
+          <label for="nome"> Nome completo (*)</label>
+          <input class="input" type="text" id="nome" placeholder="O nome do influenciador"
+                 [(ngModel)]="influenciador.nome" [readonly]="tipoPagina === 'visualizar'" [ngClass]="{'disabled': isVisualizar}">
         </div>
         <div class="input-container">
-          <label for="cpf"> CPF </label>
-          <input class="input" type="text" id="cpf" placeholder="O CPF do influenciador">
+          <label for="cpf"> CPF (*)</label>
+          <input class="input" type="text" id="cpf" placeholder="O CPF do influenciador"
+                 [specialCharacters]="['-', '.']" mask="000.000.000-00"
+                 [(ngModel)]="influenciador.cpf" [readonly]="tipoPagina === 'visualizar'" [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
       <div class="input-row">
         <div class="input-container">
-          <label for="celular"> Celular </label>
-          <input class="input" type="text" id="celular" placeholder="(XX) XXXXX-XXXX">
+          <label for="celular"> Celular (*)</label>
+          <input class="input" type="text" id="celular" placeholder="(XX) XXXXX-XXXX"
+                 [specialCharacters]="['-', '(', ')', ' ']" mask="(00) 00000-0000"
+                 [(ngModel)]="influenciador.celular" [readonly]="tipoPagina === 'visualizar'" [ngClass]="{'disabled': isVisualizar}">
         </div>
         <div class="input-container">
           <label for="email"> Email </label>
-          <input class="input" type="email" id="email" placeholder="exemplo@gmail.com">
+          <input class="input" type="email" id="email" placeholder="exemplo@gmail.com"
+                 [(ngModel)]="influenciador.email" [readonly]="tipoPagina === 'visualizar'" [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
       <div class="input-row">
         <div class="input-container">
-          <label for="cidade-estado"> Cidade/Estado </label>
-          <input class="input" type="text" id="cidade-estado" placeholder="Exemplo: Londrina/PR">
+          <label for="cidade-estado"> Cidade/Estado (*)</label>
+          <input class="input" type="text" id="cidade-estado" placeholder="Exemplo: Londrina/PR"
+                 [(ngModel)]="influenciador.cidadeEstado" [readonly]="tipoPagina === 'visualizar'" [ngClass]="{'disabled': isVisualizar}">
         </div>
         <div class="input-container">
           <label for="endereco"> Endereço </label>
-          <input class="input" type="text" id="endereco" placeholder="Exemplo: Rua Fulano da Silva, 123">
+          <input class="input" type="text" id="endereco" placeholder="Exemplo: Rua Fulano da Silva, 123"
+                 [(ngModel)]="influenciador.endereco" [readonly]="tipoPagina === 'visualizar'" [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
       <div class="input-row">
         <div class="input-container">
-          <label for="data-contrato"> Data do contrato </label>
-          <input class="input" type="date" id="data-contrato" placeholder="DD/MM/YYYY">
+          <label for="data-contrato"> Data do contrato (*)</label>
+          <input class="input" type="date" id="data-contrato" placeholder="DD/MM/YYYY"
+                 [(ngModel)]="influenciador.dataContrato" [readonly]="tipoPagina === 'visualizar'" [ngClass]="{'disabled': isVisualizar}">
         </div>
         <div class="input-container">
-          <label for="data-nascimento"> Data de nascimento </label>
-          <input class="input" type="date" id="data-nascimento" placeholder="DD/MM/YYYY">
+          <label for="data-nascimento"> Data de nascimento (*)</label>
+          <input class="input" type="date" id="data-nascimento" placeholder="DD/MM/YYYY"
+                 [(ngModel)]="influenciador.dataNascimento" [readonly]="tipoPagina === 'visualizar'" [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
+
+      Os campos (*) são obrigatórios.
     </div>
 
     <div class="box-form">
       <div class="input-row">
         <div class="input-container">
-          <label for="instagram"> Instagram </label>
-          <input class="input" type="text" id="instagram" placeholder="Instagram do influenciador">
+          <label for="instagram"> Instagram (*)</label>
+          <input class="input" type="text" id="instagram" placeholder="Instagram do influenciador"
+                 [(ngModel)]="influenciador.instagram" [readonly]="tipoPagina === 'visualizar'" [ngClass]="{'disabled': isVisualizar}">
         </div>
         <div class="input-container">
           <label for="tiktok"> TikTok </label>
-          <input class="input" type="text" id="tiktok" placeholder="TikTok do influenciador">
+          <input class="input" type="text" id="tiktok" placeholder="TikTok do influenciador"
+                 [(ngModel)]="influenciador.tiktok" [readonly]="tipoPagina === 'visualizar'" [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
       <div class="input-row">
         <div class="input-container">
           <label for="youtube"> Youtube </label>
-          <input class="input" type="text" id="youtube" placeholder="Youtube do influenciador">
+          <input class="input" type="text" id="youtube" placeholder="Youtube do influenciador"
+                 [(ngModel)]="influenciador.youtube" [readonly]="tipoPagina === 'visualizar'" [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
+
+      Os campos (*) são obrigatórios.
     </div>
 
     <div class="button-container">
-      <input *ngIf="tipoPagina === 'cadastrar'" class="submit-button" type="button" value="CADASTRAR">
-      <input class="submit-button" type="button" value="ALTERAR">
-      <input class="submit-button finalizar" type="button" value="FINALIZAR">
-      <input class="submit-button excluir" type="button" value="EXCLUIR">
+      <input *ngIf="isCadastrar" class="submit-button" type="button" value="CADASTRAR" (click)="this.cadastrarInfluenciador()">
+      <input *ngIf="isAlterar" class="submit-button" type="button" value="ALTERAR" (click)="this.alterarInfluenciador()">
+      <input *ngIf="isVisualizar" class="submit-button" type="button" value="ALTERAR" (click)="this.redirecionaParaPaginaAlterar()">
+      <input *ngIf="isVisualizar && influenciador.ativo" class="submit-button desativar" type="button" value="DESATIVAR" (click)="this.alterarStatusInfluenciador()">
+      <input *ngIf="isVisualizar && !influenciador.ativo" class="submit-button ativar" type="button" value="ATIVAR" (click)="this.alterarStatusInfluenciador()">
+      <input *ngIf="isVisualizar" class="submit-button excluir" type="button" value="EXCLUIR" (click)="this.deletarInfluenciador()">
     </div>
   </div>
 </div>

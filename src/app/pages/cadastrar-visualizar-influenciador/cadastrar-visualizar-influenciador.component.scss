@@ -8,11 +8,11 @@
 }
 
 .status-ativo{
-  color: var(--green)
+  color: var(--green);
 }
 
 .status-inativo{
-  color: var(--pink)
+  color: var(--pink);
 }
 
 .box-form{
@@ -45,24 +45,20 @@
 }
 
 .input{
+  font-family: Inter, sans-serif;
   padding: 0.75em;
   font-size: 1em;
   border-radius: 0.5em;
-  border: var(--purple) 0.15em solid;
+  border: var(--grey-background) 0.15em solid;
+  background-color: var(--grey-background);
   color: var(--purple);
 }
 
-.input:disabled{
-  background-color: var(--grey-background);
-  color: var(--dark-grey-text);
-}
-
-.input::placeholder{
+.input::placeholder, .input[type="date"]::placeholder{
   color: var(--grey-text);
 }
 
-.input[type="date"] {
-  font-family: Inter, sans-serif;
+.disabled{
   color: var(--grey-text);
 }
 
@@ -98,12 +94,16 @@
   background-color: var(--dark-purple);
 }
 
-.finalizar{
+.ativar{
   background-color: var(--green);
 }
 
-.excluir{
+.desativar{
   background-color: var(--pink);
+}
+
+.excluir{
+  background-color: var(--light-pink);
 }
 
 @media(max-width: 1000px){

@@ -12,8 +12,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MenuComponent,
     NgIf,
     CommonModule,
-    NgxMaskDirective,
     ReactiveFormsModule,
+    NgxMaskDirective,
     NgxMaskPipe
   ],
   providers:[

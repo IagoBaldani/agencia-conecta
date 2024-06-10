@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthApiService} from "./auth-api.service";
+import {ToastService} from "angular-toastify";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilService {
 
-  constructor(private route: Router, private authApiService: AuthApiService) { }
+  constructor(private route: Router, private authApiService: AuthApiService, private toastService: ToastService) { }
 
   public retornaParaPaginaDeLogin():void {
     localStorage.removeItem("tokenApi")
@@ -15,7 +16,7 @@ export class UtilService {
     this.route.navigate(["/login"]);
   }
 
-  validarToken(){
+  public validarToken(){
     let token = localStorage.getItem("tokenApi");
 
     if(token === null){
@@ -34,7 +35,23 @@ export class UtilService {
     }
   }
 
-  verificaVazioOuNulo(valorASerChecado: string | null): boolean{
+  public tratarException(responseError: any){
+    console.log(responseError);
+
+    if(responseError.error !== null){
+      if(responseError.error.mensagem !== null){
+        this.toastService.error(responseError.error.mensagem);
+      }
+      else{
+        this.toastService.error(responseError.error);
+      }
+    }
+    else{
+      this.toastService.error("Erro ao realizar operação. Por favor, tente novamente mais tarde.");
+    }
+  }
+
+  public verificaVazioOuNulo(valorASerChecado: string | null): boolean{
     return valorASerChecado === "" || valorASerChecado === " " || valorASerChecado === null
   }
 }

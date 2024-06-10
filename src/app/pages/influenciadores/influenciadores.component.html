@@ -11,7 +11,7 @@
           <div class="cidade-status">
             <span> {{influenciador.cidadeEstado}} </span>
             <span class="status status-ativo" *ngIf="influenciador.ativo"> Ativo </span>
-            <span class="status status-inativo" *ngElse> Inativo </span>
+            <span class="status status-finalizado" *ngIf="!influenciador.ativo"> Inativo </span>
           </div>
         </div>
       </a>

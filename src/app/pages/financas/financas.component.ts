@@ -41,8 +41,7 @@ export class FinancasComponent implements OnInit{
         this.preencheModelCardFinancasTotais(response.retorno);
 
       }, responseError => {
-        console.log(responseError);
-        this.toastService.error(responseError.error.mensagem);
+        this.utilService.tratarException(responseError);
       });
   }
 
@@ -56,8 +55,7 @@ export class FinancasComponent implements OnInit{
       this.preencheModelCardFinancasDescricao(response.retorno);
 
     }, responseError => {
-      console.log(responseError);
-      this.toastService.error(responseError.error.mensagem);
+      this.utilService.tratarException(responseError);
     });
   }
 
@@ -77,7 +75,6 @@ export class FinancasComponent implements OnInit{
   }
 
   pesquisaPorData(){
-
     if(this.mesAno !== '' && this.mesAno !== null){
 
       let ano = Number(this.mesAno.split("-").at(0));
