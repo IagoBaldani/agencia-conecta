@@ -61,6 +61,12 @@ export class UtilService {
     return `R$${parteInteirosFormatada},${parteDecimal}`;
   }
 
+  public isEmailValido(email: string): boolean{
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return emailRegex.test(email);
+  }
+
   public verificaVazioOuNulo(valorASerChecado: string | number | null): boolean{
     return valorASerChecado === "" || valorASerChecado === " " || valorASerChecado === null
   }

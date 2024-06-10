@@ -57,9 +57,6 @@ export class CadastrarVisualizarInfluenciadorComponent implements OnInit {
         window.location.href = '/influenciadores';
       }, 2000);
     }
-    else{
-      this.toastService.error("Favor informar todos os campos obrigatórios.");
-    }
   }
 
   alterarInfluenciador() {
@@ -69,9 +66,6 @@ export class CadastrarVisualizarInfluenciadorComponent implements OnInit {
       setTimeout(()=>{
         window.location.href = `/cadastrar-visualizar-influenciador/visualizar?id=${this.idInfluenciador}`;
       }, 2000);
-    }
-    else{
-      this.toastService.error("Favor informar todos os campos obrigatórios.");
     }
   }
 
@@ -147,6 +141,12 @@ export class CadastrarVisualizarInfluenciadorComponent implements OnInit {
     this.utilService.verificaVazioOuNulo(this.influenciador.dataContrato) ||
     this.utilService.verificaVazioOuNulo(this.influenciador.dataNascimento) ||
     this.utilService.verificaVazioOuNulo(this.influenciador.instagram)){
+      this.toastService.error("Favor informar todos os campos obrigatórios.");
+      return false;
+    }
+
+    if(!this.utilService.isEmailValido(this.influenciador.email)){
+      this.toastService.error("Favor informar um email válido.");
       return false;
     }
 
