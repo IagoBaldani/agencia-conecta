@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthApiService} from "./auth-api.service";
 import {ToastService} from "angular-toastify";
+import {InfluenciadorSimplificadoModel} from "../model/influenciadorSimplificado.model";
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,12 @@ export class UtilService {
     return `R$${parteInteirosFormatada},${parteDecimal}`;
   }
 
+  public formataData(data: string){
+    let dataQuebrada = data.split("-");
+
+    return `${dataQuebrada.at(2)}/${dataQuebrada.at(1)}/${dataQuebrada.at(0)}`;
+  }
+
   public isEmailValido(email: string): boolean{
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -69,5 +76,18 @@ export class UtilService {
 
   public verificaVazioOuNulo(valorASerChecado: string | number | null): boolean{
     return valorASerChecado === "" || valorASerChecado === " " || valorASerChecado === null
+  }
+
+  public preencheModelInfluenciadorSimplificado(listaInfluenciadores: InfluenciadorSimplificadoModel[], listaRetorno: any[]) {
+    listaRetorno.forEach( retorno => {
+      let influenciadorSimplificado = new InfluenciadorSimplificadoModel();
+
+      influenciadorSimplificado.id = retorno.id;
+      influenciadorSimplificado.nome = retorno.nome;
+      influenciadorSimplificado.cidadeEstado = retorno.cidadeEstado;
+      influenciadorSimplificado.ativo = retorno.ativo;
+
+      listaInfluenciadores.push(influenciadorSimplificado);
+    })
   }
 }

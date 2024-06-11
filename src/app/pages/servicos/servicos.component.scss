@@ -16,17 +16,15 @@
 }
 
 .box-inputs .data-input{
-  color: var(--grey-text);
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  color: var(--purple);
   border-radius: 0.4em;
-  border: 2px solid var(--grey-text);
-  background-color: var(--grey-background);
+  border: 2px solid white;
+  background-color: white;
   padding: 1em;
 }
 
-.box-inputs .data-input::placeholder{
-  color: var(--grey-text);
-  font-size: 0.8em;
-}
 
 .submit-button, .button-cadastrar-servico{
   background-color: var(--purple);
@@ -85,9 +83,12 @@
   color: var(--light-pink);
 }
 
+.value{
+  color: var(--green);
+}
+
 .value, .status{
   font-weight: 600;
-  color: var(--green);
 }
 
 .upper-part-right{

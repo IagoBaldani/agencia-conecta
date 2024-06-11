@@ -18,6 +18,12 @@ export class InfluenciadorApiService {
     return this.http.get(`${this.apiUrl}/influenciador?buscaSimplificada=true`, {headers});
   }
 
+  getInfluenciadoresAtivos(token: string): Observable<any> {
+    let headers = this.getHeaders(token);
+
+    return this.http.get(`${this.apiUrl}/influenciador/status?ativos=true`, {headers});
+  }
+
   getInfluenciador(token: string, id: string): Observable<any> {
     let headers = this.getHeaders(token);
 

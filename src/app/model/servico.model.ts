@@ -1,0 +1,38 @@
+export class ServicoModel{
+  id: string;
+  nomeContratante: string;
+  idInfluenciador: string;
+  nomeInfluenciador: string;
+  celularContratante: string;
+  emailContratante: string;
+  proposta: string;
+  dataInicio: string;
+  dataFim: string;
+  porcentagem: number;
+  valor: number;
+  descricaoTipoPagamento: string;
+  usoImagem: boolean;
+  impulsionamento: boolean;
+  exclusividade: boolean;
+  ativo: boolean;
+
+  constructor() {
+    this.id = "";
+    this.nomeContratante = "";
+    this.idInfluenciador = "";
+    this.nomeInfluenciador = "";
+    this.celularContratante = "";
+    this.emailContratante = "";
+    this.proposta = "";
+    this.dataInicio = "";
+    this. dataFim = "";
+    this.porcentagem = 0;
+    this.valor = 0;
+    this.descricaoTipoPagamento = "";
+    this.usoImagem = false;
+    this.impulsionamento = false;
+    this.exclusividade = false;
+    this.ativo = false;
+  }
+
+}

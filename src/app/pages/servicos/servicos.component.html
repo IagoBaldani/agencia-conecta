@@ -6,15 +6,17 @@
 
     <div class="box-inputs">
       <form class="box-inputs-left-part">
-        <select id="influenciadores" name="influenciadores" class="data-input">
-          <option value="default">Influenciador(a)</option>
+        <select id="influenciadores" name="influenciadores" class="data-input" [(ngModel)]="idInfluenciadorSelecionado">
+          <option [ngValue]="null" disabled hidden>Selecione um influenciador</option>
+          <option [ngValue]="influenciador.id" *ngFor="let influenciador of listaInfluenciadores"> {{influenciador.nome}} </option>
         </select>
-        <select id="status" name="status" class="data-input">
-          <option value="ativo">Ativo</option>
-          <option value="inativo">Inativo</option>
+        <select id="status" name="status" class="data-input" [(ngModel)]="statusSelecionado">
+          <option [ngValue]="null" disabled hidden>Selecione um status</option>
+          <option [ngValue]="true"> Ativo </option>
+          <option [ngValue]="false"> Finalizado </option>
         </select>
 
-        <input class="submit-button" type="button" value="PESQUISAR">
+        <input class="submit-button" type="button" value="PESQUISAR" (click)="pesquisarServicos()">
       </form>
 
       <a href="/cadastrar-visualizar-servico/cadastrar">
@@ -25,30 +27,33 @@
     </div>
 
     <div class="box-cards-servicos">
-      <a href="/cadastrar-visualizar-servico/visualizar">
+      <a href="'/cadastrar-visualizar-servico/visualizar?id={{servico.id}}" *ngFor="let servico of listaServicos">
         <div class="card-servicos">
           <div class="upper-part">
             <div class="upper-part-left">
-              <span class="nome-empresa"> BraBet - Apostas Esportivas </span>
-              <span class="nome-influenciador"> Julie Mendes </span>
+              <span class="nome-empresa"> {{servico.nomeContratante}}</span>
+              <span class="nome-influenciador"> {{servico.nomeInfluenciador}} </span>
             </div>
             <div class="upper-part-right">
-              <span class="value"> R$3000,00</span>
-              <span> 14/06/2022 - 20/06/2022</span>
+              <span class="value"> {{utilService.formataValoresEmReais(servico.valor)}} </span>
+              <span> {{utilService.formataData(servico.dataInicio)}} ao {{utilService.formataData(servico.dataFim)}}</span>
             </div>
           </div>
           <span>
-          4 stories - 3 vezes na semana - Destaques
-        </span>
+            {{servico.proposta}}
+          </span>
           <div class="lower-part">
             <div class="lower-part-left">
-              <span class="tag"> Uso de Imagem  </span>
-              <span class="tag"> Impulsionamento </span>
-              <span class="tag"> Impulsionamento </span>
+              <span class="tag" *ngIf="servico.usoImagem"> Uso de Imagem  </span>
+              <span class="tag" *ngIf="servico.impulsionamento"> Impulsionamento </span>
+              <span class="tag" *ngIf="servico.exclusividade"> Exclusividade </span>
             </div>
-            <span class="status">
-            Ativo
-          </span>
+            <span class="status status-ativo" *ngIf="servico.ativo">
+              Ativo
+            </span>
+            <span class="status status-finalizado" *ngIf="!servico.ativo">
+              Finalizado
+            </span>
           </div>
         </div>
       </a>

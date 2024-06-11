@@ -43,29 +43,17 @@ export class InfluenciadoresComponent implements OnInit {
 
   private getInfluenciadores(token: string) {
     this.influenciadorApiService.getInfluenciadores(token).subscribe(response => {
-     this.preencheModelInfluenciadorSimplificado(response.retorno);
+     this.utilService.preencheModelInfluenciadorSimplificado(this.listaInfluenciadorSimplificado, response.retorno);
 
     }, responseError => {
       this.utilService.tratarException(responseError);
     });
   }
 
-  preencheModelCardInfluenciadores(retorno: any) {
+  private preencheModelCardInfluenciadores(retorno: any) {
     this.cardInfluenciadores.influenciadorMaisAntigo = retorno.influenciadorMaisAntigo;
     this.cardInfluenciadores.influenciadorMaisRecente = retorno.influenciadorMaisRecente;
     this.cardInfluenciadores.qtdInfluenciadoresAtivos = retorno.qtdInfluenciadoresAtivos;
   }
 
-  preencheModelInfluenciadorSimplificado(listaRetorno: any[]) {
-    listaRetorno.forEach( retorno => {
-      let influenciadorSimplificado = new InfluenciadorSimplificadoModel();
-
-      influenciadorSimplificado.id = retorno.id;
-      influenciadorSimplificado.nome = retorno.nome;
-      influenciadorSimplificado.cidadeEstado = retorno.cidadeEstado;
-      influenciadorSimplificado.ativo = retorno.ativo;
-
-      this.listaInfluenciadorSimplificado.push(influenciadorSimplificado);
-    })
-  }
 }
