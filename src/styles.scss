@@ -39,11 +39,11 @@ a:-webkit-any-link{
 }
 
 .status-ativo{
-  color: var(--green);
+  color: var(--green) !important;
 }
 
 .status-finalizado{
-  color: var(--pink);
+  color: var(--pink) !important;
 }
 
 

@@ -7,93 +7,120 @@
       <h2 *ngIf="this.tipoPagina === 'visualizar'"> Visualizar serviço</h2>
       <h2 *ngIf="this.tipoPagina === 'alterar'"> Alterar serviço</h2>
 
-      <h2 *ngIf="this.tipoPagina === 'visualizar' && false" class="status-ativo"> Ativo </h2>
-      <h2 *ngIf="this.tipoPagina === 'visualizar'" class="status-finalizado"> Finalizado </h2>
+      <h2 *ngIf="this.tipoPagina === 'visualizar' && servico.ativo" class="status-ativo"> Ativo </h2>
+      <h2 *ngIf="this.tipoPagina === 'visualizar' && !servico.ativo" class="status-finalizado"> Finalizado </h2>
     </div>
 
 
     <div class="box-form">
       <div class="input-row">
         <div class="input-container">
-          <label for="nome-empresa"> Nome da empresa </label>
-          <input class="input" type="text" id="nome-empresa" placeholder="O nome da empresa contratante">
+          <label for="nome-empresa"> Nome da empresa (*)</label>
+          <input class="input" type="text" id="nome-empresa" placeholder="O nome da empresa contratante"
+                 [(ngModel)]="servico.nomeContratante" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
         </div>
         <div class="input-container">
-          <label for="influenciador"> Influenciador </label>
-          <select id="influenciador" name="influenciador" class="input">
-            <option value="default"> Influenciador(a) </option>
+          <label for="influenciador"> Influenciador (*)</label>
+          <select id="influenciador" name="influenciador" class="input"
+                  [(ngModel)]="servico.influenciadorId" [disabled]="isVisualizar"
+                  [ngClass]="{'disabled': isVisualizar}">
+            <option [ngValue]="null" disabled hidden>Selecione um influenciador</option>
+            <option [ngValue]="influenciador.id"
+                    *ngFor="let influenciador of listaInfluenciadoresSimplificado"> {{influenciador.nome}} </option>
           </select>
         </div>
       </div>
       <div class="input-row">
         <div class="input-container">
-          <label for="celular"> Celular contratante </label>
-          <input class="input" type="text" id="celular" placeholder="(XX) XXXXX-XXXX">
+          <label for="celular"> Celular contratante (*)</label>
+          <input class="input" type="text" id="celular" placeholder="(XX) XXXXX-XXXX"
+                 [specialCharacters]="['-', '(', ')', ' ']" mask="(00) 00000-0000"
+                 [(ngModel)]="servico.celularContratante" [readonly]="isVisualizar"
+                 [ngClass]="{'disabled': isVisualizar}">
         </div>
         <div class="input-container">
           <label for="email"> Email contratante </label>
-          <input class="input" type="email" id="email" placeholder="exemplo@exemplo.com.br">
+          <input class="input" type="email" id="email" placeholder="exemplo@exemplo.com.br"
+                 [(ngModel)]="servico.emailContratante" [readonly]="isVisualizar"
+                 [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
       <div class="input-row">
         <div class="input-container">
-          <label for="proposta"> Proposta do serviço </label>
-          <input class="input" type="text" id="proposta">
+          <label for="proposta"> Proposta do serviço (*)</label>
+          <input class="input" type="text" id="proposta"
+                 [(ngModel)]="servico.proposta" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
       <div class="input-row">
         <div class="input-container">
-          <label for="data-inicio"> Data de inicio </label>
-          <input class="input" type="date" id="data-inicio" placeholder="DD/MM/YYYY">
+          <label for="data-inicio"> Data de inicio (*)</label>
+          <input class="input" type="date" id="data-inicio" placeholder="DD/MM/YYYY"
+                 [(ngModel)]="servico.dataInicio" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
         </div>
         <div class="input-container">
-          <label for="data-fim"> Data do fim </label>
-          <input class="input" type="date" id="data-fim" placeholder="DD/MM/YYYY">
-        </div>
-      </div>
-      <div class="input-row">
-        <div class="input-container">
-          <label for="porcentagem"> Porcentagem (1% a 99%) </label>
-          <input class="input" type="number" id="porcentagem" placeholder="%" min="1" max="99">
-        </div>
-        <div class="input-container">
-          <label for="valor"> Valor em R$ </label>
-          <input class="input" type="text" id="valor" placeholder="9999,99" mask="separator,2" thousandSeparator="." decimalMarker=",">
+          <label for="data-fim"> Data do fim (*)</label>
+          <input class="input" type="date" id="data-fim" placeholder="DD/MM/YYYY"
+                 [(ngModel)]="servico.dataFim" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
       <div class="input-row">
         <div class="input-container">
-          <label for="forma-pagamento"> Forma de pagamento </label>
-          <input class="input" type="text" id="forma-pagamento">
+          <label for="porcentagem"> Porcentagem (1% a 99%) (*)</label>
+          <input class="input" type="text" id="porcentagem" placeholder="%" mask="00"
+                 [(ngModel)]="servico.porcentagem" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
+        </div>
+        <div class="input-container">
+          <label for="valor"> Valor em R$ (*)</label>
+          <input class="input" type="text" id="valor" placeholder="9999,99" mask="separator,2" thousandSeparator="."
+                 decimalMarker=","
+                 [(ngModel)]="servico.valor" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <label for="forma-pagamento"> Forma de pagamento (*)</label>
+          <input class="input" type="text" id="forma-pagamento"
+                 [(ngModel)]="servico.descricaoTipoPagamento" [readonly]="isVisualizar"
+                 [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
       <div class="input-row row-checkbox">
         <div class="input-container-checkbox">
           <label>
-            <input class="input" type="checkbox" [value]="'uso-de-imagem'">
+            <input class="input" type="checkbox" [value]="true"
+                   [(ngModel)]="servico.usoImagem" [disabled]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
             Uso de imagem
           </label>
         </div>
         <div class="input-container-checkbox">
           <label>
-            <input class="input" type="checkbox" [value]="'impulsionamento'">
+            <input class="input" type="checkbox" [value]="true"
+                   [(ngModel)]="servico.impulsionamento" [disabled]="isVisualizar"
+                   [ngClass]="{'disabled': isVisualizar}">
             Impulsionamento
           </label>
         </div>
         <div class="input-container-checkbox">
           <label>
-            <input class="input" type="checkbox" [value]="'exclusividade'">
+            <input class="input" type="checkbox" [value]="true"
+                   [(ngModel)]="servico.exclusividade" [disabled]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
             Exclusividade
           </label>
         </div>
       </div>
+
+      Os campos (*) são obrigatórios.
     </div>
 
     <div class="button-container">
-      <input *ngIf="tipoPagina === 'cadastrar'" class="submit-button" type="button" value="CADASTRAR">
-      <input class="submit-button" type="button" value="ALTERAR">
-      <input class="submit-button finalizar" type="button" value="FINALIZAR">
-      <input class="submit-button excluir" type="button" value="EXCLUIR">
+      <input *ngIf="isCadastrar" class="submit-button" type="button" value="CADASTRAR" (click)="cadastrarServico()">
+      <input *ngIf="isAlterar" class="submit-button" type="button" value="ALTERAR" (click)="alterarServico()">
+
+      <input *ngIf="isVisualizar" class="submit-button" type="button" value="ALTERAR" (click)="redirecionaParaPaginaAlterar()">
+      <input *ngIf="isVisualizar && servico.ativo" class="submit-button finalizar" type="button" value="FINALIZAR" (click)="alterarStatus()">
+      <input *ngIf="isVisualizar && !servico.ativo" class="submit-button finalizar" type="button" value="REATIVAR" (click)="alterarStatus()">
+      <input *ngIf="isVisualizar" class="submit-button excluir" type="button" value="EXCLUIR" (click)="excluirServico()">
     </div>
   </div>
 </div>

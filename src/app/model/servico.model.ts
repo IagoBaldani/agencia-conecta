@@ -1,7 +1,7 @@
 export class ServicoModel{
   id: string;
   nomeContratante: string;
-  idInfluenciador: string;
+  influenciadorId: string;
   nomeInfluenciador: string;
   celularContratante: string;
   emailContratante: string;
@@ -19,7 +19,7 @@ export class ServicoModel{
   constructor() {
     this.id = "";
     this.nomeContratante = "";
-    this.idInfluenciador = "";
+    this.influenciadorId = "";
     this.nomeInfluenciador = "";
     this.celularContratante = "";
     this.emailContratante = "";

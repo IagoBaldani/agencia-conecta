@@ -68,7 +68,7 @@ export class ServicosComponent implements OnInit{
       servico.nomeContratante = retorno.nomeContratante;
       servico.emailContratante = retorno.emailContratante;
       servico.celularContratante = retorno.celularContratante;
-      servico.idInfluenciador = retorno.influenciador.id;
+      servico.influenciadorId = retorno.influenciador.id;
       servico.nomeInfluenciador = retorno.influenciador.nome;
       servico.proposta = retorno.proposta;
       servico.porcentagem = retorno.porcentagem;
