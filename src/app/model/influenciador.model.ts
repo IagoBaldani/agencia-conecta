@@ -6,7 +6,8 @@ export class InfluenciadorModel {
   email: string;
   cidadeEstado: string;
   endereco: string;
-  dataContrato: string;
+  dataAssinaturaContrato: string;
+  dataVencimentoContrato: string;
   dataNascimento: string;
   instagram: string;
   tiktok: string;
@@ -23,7 +24,8 @@ export class InfluenciadorModel {
     this.email = "";
     this.cidadeEstado = "";
     this.endereco = "";
-    this.dataContrato = "";
+    this.dataAssinaturaContrato = "";
+    this.dataVencimentoContrato = "";
     this.dataNascimento = "";
     this.instagram = "";
     this.tiktok = "";

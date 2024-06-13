@@ -52,14 +52,23 @@
       </div>
       <div class="input-row">
         <div class="input-container">
-          <label for="data-contrato"> Data do contrato (*)</label>
-          <input class="input" type="date" id="data-contrato" placeholder="DD/MM/YYYY"
-                 [(ngModel)]="influenciador.dataContrato" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
+          <label for="data-assinatura-contrato"> Data de início do contrato (*)</label>
+          <input class="input" type="date" id="data-assinatura-contrato" placeholder="DD/MM/YYYY"
+                 [(ngModel)]="influenciador.dataAssinaturaContrato" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
         </div>
+        <div class="input-container">
+          <label for="data-vencimento-contrato"> Data vencimento do contrato (*)</label>
+          <input class="input" type="date" id="data-vencimento-contrato" placeholder="DD/MM/YYYY"
+                 [(ngModel)]="influenciador.dataVencimentoContrato" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
+        </div>
+      </div>
+      <div class="input-row">
         <div class="input-container">
           <label for="data-nascimento"> Data de nascimento (*)</label>
           <input class="input" type="date" id="data-nascimento" placeholder="DD/MM/YYYY"
                  [(ngModel)]="influenciador.dataNascimento" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
+        </div>
+        <div class="input-container">
         </div>
       </div>
 

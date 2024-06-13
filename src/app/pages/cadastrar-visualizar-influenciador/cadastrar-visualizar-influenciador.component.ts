@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {MenuComponent} from "../../components/menu/menu.component";
 import {NgClass, NgIf} from "@angular/common";
-import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
+import {NgxMaskDirective, provideNgxMask} from "ngx-mask";
 import {ActivatedRoute, Router} from "@angular/router";
 import {InfluenciadorModel} from "../../model/influenciador.model";
 import {InfluenciadorApiService} from "../../service/influenciador-api.service";
@@ -138,7 +138,8 @@ export class CadastrarVisualizarInfluenciadorComponent implements OnInit {
     this.utilService.verificaVazioOuNulo(this.influenciador.cpf) ||
     this.utilService.verificaVazioOuNulo(this.influenciador.celular) ||
     this.utilService.verificaVazioOuNulo(this.influenciador.cidadeEstado) ||
-    this.utilService.verificaVazioOuNulo(this.influenciador.dataContrato) ||
+    this.utilService.verificaVazioOuNulo(this.influenciador.dataAssinaturaContrato) ||
+    this.utilService.verificaVazioOuNulo(this.influenciador.dataVencimentoContrato) ||
     this.utilService.verificaVazioOuNulo(this.influenciador.dataNascimento) ||
     this.utilService.verificaVazioOuNulo(this.influenciador.instagram)){
       this.toastService.error("Favor informar todos os campos obrigatórios.");
@@ -183,7 +184,8 @@ export class CadastrarVisualizarInfluenciadorComponent implements OnInit {
     this.influenciador.email = retorno.email;
     this.influenciador.cidadeEstado = retorno.cidadeEstado;
     this.influenciador.endereco = retorno.endereco;
-    this.influenciador.dataContrato = retorno.dataContrato;
+    this.influenciador.dataAssinaturaContrato = retorno.dataAssinaturaContrato;
+    this.influenciador.dataVencimentoContrato = retorno.dataVencimentoContrato;
     this.influenciador.dataNascimento = retorno.dataNascimento;
     this.influenciador.instagram = retorno.instagram;
     this.influenciador.tiktok = retorno.tiktok;
