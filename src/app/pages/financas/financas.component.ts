@@ -23,8 +23,10 @@ export class FinancasComponent implements OnInit{
   cardFinancasTotais: CardFinancasTotaisModel = new CardFinancasTotaisModel();
   listaCardFinancasDescricao: CardFinancasDescricaoModel[] = [];
   mesAno: string = '';
+  mesAtual: number = 0;
+  anoAtual: number = 0;
 
-  private dataAtual: Date = new Date();
+  dataAtual: Date = new Date();
   private token = this.utilService.validarToken();
 
   constructor(public utilService: UtilService, private cardApiService: CardApiService,
@@ -32,12 +34,31 @@ export class FinancasComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getCardFinancasTotais(this.token);
+    this.mesAtual = this.dataAtual.getMonth() + 1;
+    this.anoAtual = this.dataAtual.getFullYear() - 2000;
+
+    this.getCardFinancasTotais(this.token, this.dataAtual.getMonth() + 1, this.dataAtual.getFullYear());
     this.getCardFinancasDescricao(this.token, this.dataAtual.getMonth() + 1, this.dataAtual.getFullYear());
   }
 
-  getCardFinancasTotais(token: string){
-      this.cardApiService.getCardFinancasTotais(token, this.dataAtual.getMonth() + 1, this.dataAtual.getFullYear()).subscribe(response => {
+  pesquisaPorData(){
+    if(this.mesAno !== '' && this.mesAno !== null){
+      this.anoAtual = Number(this.mesAno.split("-").at(0));
+      this.mesAtual = Number(this.mesAno.split("-").at(1));
+
+      this.getCardFinancasTotais(this.token, this.mesAtual, this.anoAtual);
+      this.getCardFinancasDescricao(this.token, this.mesAtual, this.anoAtual);
+
+      this.anoAtual -= 2000;
+    }
+    else{
+      this.toastService.error("Por favor informe o mês e o ano desejado.");
+    }
+
+  }
+
+  private getCardFinancasTotais(token: string, mes: number, ano: number){
+      this.cardApiService.getCardFinancasTotais(token, mes, ano).subscribe(response => {
         this.preencheModelCardFinancasTotais(response.retorno);
 
       }, responseError => {
@@ -45,12 +66,7 @@ export class FinancasComponent implements OnInit{
       });
   }
 
-  preencheModelCardFinancasTotais(retorno: any) {
-    this.cardFinancasTotais.ganhosAcessor = retorno.ganhosAcessor;
-    this.cardFinancasTotais.totalContratos = retorno.totalContratos;
-  }
-
-  getCardFinancasDescricao(token: string, mes: number, ano: number){
+  private getCardFinancasDescricao(token: string, mes: number, ano: number){
     this.cardApiService.getCardFinancasDescricao(token, mes, ano).subscribe(response => {
       this.preencheModelCardFinancasDescricao(response.retorno);
 
@@ -59,7 +75,12 @@ export class FinancasComponent implements OnInit{
     });
   }
 
-  preencheModelCardFinancasDescricao(listaRetorno: any[]) {
+  private preencheModelCardFinancasTotais(retorno: any) {
+    this.cardFinancasTotais.ganhosAcessor = retorno.ganhosAcessor;
+    this.cardFinancasTotais.totalContratos = retorno.totalContratos;
+  }
+
+  private preencheModelCardFinancasDescricao(listaRetorno: any[]) {
     this.listaCardFinancasDescricao = [];
 
     listaRetorno.forEach(retorno => {
@@ -72,19 +93,5 @@ export class FinancasComponent implements OnInit{
 
       this.listaCardFinancasDescricao.push(cardFinancasDescricaoModel);
     })
-  }
-
-  pesquisaPorData(){
-    if(this.mesAno !== '' && this.mesAno !== null){
-
-      let ano = Number(this.mesAno.split("-").at(0));
-      let mes = Number(this.mesAno.split("-").at(1));
-
-      this.getCardFinancasDescricao(this.token, mes, ano);
-    }
-    else{
-      this.toastService.error("Por favor informe o mês e o ano desejado.");
-    }
-
   }
 }

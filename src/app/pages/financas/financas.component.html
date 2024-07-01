@@ -2,16 +2,16 @@
   <app-menu pagina="financas"></app-menu>
 
   <div class="container-principal">
-    <h2> Finanças </h2>
+    <h2> Finanças  </h2>
 
     <div class="box-cards">
       <div class="card">
-        <span class="description"> Ganhos do mês atual </span>
+        <span class="description"> Ganhos {{mesAtual}}/{{anoAtual}}</span>
         <span class="value" >  {{utilService.formataValoresEmReais(cardFinancasTotais.ganhosAcessor)}} </span>
       </div>
       <div class="card">
-        <span class="description"> Total em contratos concluídos no mês atual </span>
-        <span class="value"> {{utilService.formataValoresEmReais(cardFinancasTotais.totalContratos)}}  </span>
+        <span class="description"> Total em contratos concluídos {{mesAtual}}/{{anoAtual}} </span>
+        <span class="value"> {{utilService.formataValoresEmReais(cardFinancasTotais.totalContratos)}} </span>
       </div>
     </div>
     <form>
