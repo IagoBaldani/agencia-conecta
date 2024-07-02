@@ -42,18 +42,35 @@
   background-color: var(--dark-purple);
 }
 
+.card-influenciador span:nth-child(1){
+  overflow-y: scroll;
+  padding-right: 15px;
+}
+
+.card-influenciador span:nth-child(1)::-webkit-scrollbar {
+  width: 0px;
+}
+
 .nome-influenciador{
   max-height: 5em;
   font-weight: 600;
   font-size: 1.3em;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .cidade-status{
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+}
+
+.cidade-status span:nth-child(1){
+  overflow-y: scroll;
+  padding-right: 15px;
+}
+
+.cidade-status span:nth-child(1)::-webkit-scrollbar {
+  width: 0px;
 }
 
 .box-cards{
