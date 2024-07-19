@@ -2,6 +2,45 @@
   <app-menu pagina="influenciadores"></app-menu>
 
   <div class="container-principal">
+    <div class="box-lists">
+      <div class="list">
+        <span class="list-title"> Próximos Aniversários </span>
+        <div class="list-body">
+          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+        </div>
+
+      </div>
+      <div class="list">
+        <span class="list-title"> Próximos vencimentos de contrato </span>
+        <div class="list-body">
+          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-cards">
+      <div class="card">
+        <span class="description"> Influenciadores ativos </span>
+        <span class="value value-acessor"> {{cardInfluenciadores.qtdInfluenciadoresAtivos}} </span>
+      </div>
+      <div class="card">
+        <span class="description"> Influenciador mais antigo </span>
+        <span class="value"> {{cardInfluenciadores.influenciadorMaisAntigo}} </span>
+      </div>
+      <div class="card">
+        <span class="description"> Influenciador mais recente </span>
+        <span class="value"> {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+      </div>
+    </div>
+
     <h2> Influenciadores </h2>
 
     <div class="grid-cards-influenciadores">
@@ -29,21 +68,6 @@
           <span> Cadastrar novo influenciador </span>
         </div>
       </a>
-    </div>
-
-    <div class="box-cards">
-      <div class="card">
-        <span class="description"> Influenciadores ativos </span>
-        <span class="value value-acessor"> {{cardInfluenciadores.qtdInfluenciadoresAtivos}} </span>
-      </div>
-      <div class="card">
-        <span class="description"> Influenciador mais antigo </span>
-        <span class="value"> {{cardInfluenciadores.influenciadorMaisAntigo}} </span>
-      </div>
-      <div class="card">
-        <span class="description"> Influenciador mais recente </span>
-        <span class="value"> {{cardInfluenciadores.influenciadorMaisRecente}} </span>
-      </div>
     </div>
 
   </div>

@@ -39,6 +39,10 @@ a:-webkit-any-link{
   padding-right: 3em;
 }
 
+.container-principal::-webkit-scrollbar{
+  width: 0;
+}
+
 .container-principal h2{
   color: var(--purple);
 }
