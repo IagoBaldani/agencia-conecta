@@ -76,7 +76,8 @@ export class FinancasComponent implements OnInit{
   }
 
   private preencheModelCardFinancasTotais(retorno: any) {
-    this.cardFinancasTotais.ganhosAcessor = retorno.ganhosAcessor;
+    this.cardFinancasTotais.ganhosDeclaraveisAcessor = retorno.ganhosAcessorDeclaravel;
+    this.cardFinancasTotais.ganhosNaoDeclaraveisAcessor = retorno.ganhosAcessorNaoDeclaravel;
     this.cardFinancasTotais.totalContratos = retorno.totalContratos;
   }
 

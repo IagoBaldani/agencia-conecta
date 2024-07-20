@@ -6,8 +6,12 @@
 
     <div class="box-cards">
       <div class="card">
-        <span class="description"> Ganhos {{mesAtual}}/{{anoAtual}}</span>
-        <span class="value" >  {{utilService.formataValoresEmReais(cardFinancasTotais.ganhosAcessor)}} </span>
+        <span class="description"> Ganhos declaráveis {{mesAtual}}/{{anoAtual}}</span>
+        <span class="value" >  {{utilService.formataValoresEmReais(cardFinancasTotais.ganhosDeclaraveisAcessor)}} </span>
+      </div>
+      <div class="card">
+        <span class="description"> Ganhos não declaráveis {{mesAtual}}/{{anoAtual}}</span>
+        <span class="value" >  {{utilService.formataValoresEmReais(cardFinancasTotais.ganhosNaoDeclaraveisAcessor)}} </span>
       </div>
       <div class="card">
         <span class="description"> Total em contratos concluídos {{mesAtual}}/{{anoAtual}} </span>
