@@ -175,6 +175,7 @@ export class CadastrarVisualizarServicoComponent implements OnInit{
     this.servico.impulsionamento = retorno.impulsionamento;
     this.servico.usoImagem = retorno.usoImagem;
     this.servico.exclusividade = retorno.exclusividade;
+    this.servico.declaravel = retorno.declaravel;
   }
 
   private preencheAtributosPagina() {

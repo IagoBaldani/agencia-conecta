@@ -108,6 +108,13 @@
             Exclusividade
           </label>
         </div>
+        <div class="input-container-checkbox">
+          <label>
+            <input class="input" type="checkbox" [value]="true"
+                   [(ngModel)]="servico.declaravel" [disabled]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
+            Declarável
+          </label>
+        </div>
       </div>
 
       Os campos (*) são obrigatórios.

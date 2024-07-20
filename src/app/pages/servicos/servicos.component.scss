@@ -59,7 +59,7 @@
   padding: 1em;
   gap: 3em;
   border-radius: 0.5em;
-  box-shadow: 5px 0px 16px -3px rgba(153,153,153,1);
+  box-shadow: 5px 0 16px -3px rgba(153,153,153,1);
 }
 
 .upper-part, .lower-part{
@@ -111,6 +111,10 @@
   background-color: var(--dark-purple);
   padding: 0.5em;
   border-radius: 0.2em;
+}
+
+.green{
+  color: var(--green);
 }
 
 .status{

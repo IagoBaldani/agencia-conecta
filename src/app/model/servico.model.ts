@@ -14,6 +14,7 @@ export class ServicoModel{
   usoImagem: boolean;
   impulsionamento: boolean;
   exclusividade: boolean;
+  declaravel: boolean;
   ativo: boolean;
 
   constructor() {
@@ -32,6 +33,7 @@ export class ServicoModel{
     this.usoImagem = false;
     this.impulsionamento = false;
     this.exclusividade = false;
+    this.declaravel = false;
     this.ativo = false;
   }
 

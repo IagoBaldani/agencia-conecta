@@ -78,6 +78,7 @@ export class ServicosComponent implements OnInit{
       servico.impulsionamento = retorno.impulsionamento;
       servico.usoImagem = retorno.usoImagem;
       servico.exclusividade = retorno.exclusividade;
+      servico.declaravel = retorno.declaravel;
 
       this.listaServicos.push(servico);
     });
