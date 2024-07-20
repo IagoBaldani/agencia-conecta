@@ -6,22 +6,32 @@
       <div class="list">
         <span class="list-title"> Próximos Aniversários </span>
         <div class="list-body">
-          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
-          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
-          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
-          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
-          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+          <span class="list-item" *ngFor="let proximoAniversario of listaProximosAniversarios">
+            ({{proximoAniversario.data}}) {{proximoAniversario.nomeInfluenciador}}
+          </span>
+
+          <div class="list-empty" *ngIf="listaProximosAniversarios.length === 0">
+            <span class="material-symbols-rounded">
+              sentiment_dissatisfied
+            </span>
+              Nenhum aniversário próximo.
+          </div>
         </div>
 
       </div>
       <div class="list">
         <span class="list-title"> Próximos vencimentos de contrato </span>
         <div class="list-body">
-          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
-          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
-          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
-          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
-          <span class="list-item"> (15/07) {{cardInfluenciadores.influenciadorMaisRecente}} </span>
+          <span class="list-item" *ngFor="let proximoContratoVencendo of listaProximosContratosVencendo">
+            ({{proximoContratoVencendo.data}}) {{proximoContratoVencendo.nomeInfluenciador}}
+          </span>
+
+          <div class="list-empty" *ngIf="listaProximosContratosVencendo.length === 0">
+            <span class="material-symbols-rounded">
+              sentiment_satisfied
+            </span>
+            Nenhum contrato vencendo no próximo mês.
+          </div>
         </div>
       </div>
     </div>

@@ -68,6 +68,20 @@ export class UtilService {
     return `${dataQuebrada.at(2)}/${dataQuebrada.at(1)}/${dataQuebrada.at(0)}`;
   }
 
+  public formataDataMesAno(data: string){
+    let dataQuebrada = data.split("-");
+
+    return `${dataQuebrada.at(2)}/${dataQuebrada.at(1)}`;
+  }
+
+  public getDataAtualFormatadaParaComparacao(){
+    let dataAtual = new Date();
+    let mesAtualInt = dataAtual.getMonth()+1
+    let mesAtualString = mesAtualInt < 10 ? `0${mesAtualInt}` : `${mesAtualInt}`
+
+    return `${dataAtual.getDate()}/${mesAtualString}`
+  }
+
   public isEmailValido(email: string): boolean{
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

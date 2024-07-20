@@ -29,6 +29,18 @@ export class CardApiService {
     return this.http.get(`${this.apiUrl}/card/financa?mes=${mes}&ano=${ano}`, {headers});
   }
 
+  getCardProximosAniversarios(token: string): Observable<any> {
+    let headers = this.getHeaders(token);
+
+    return this.http.get(`${this.apiUrl}/card/aniversarios`, {headers});
+  }
+
+  getCardProximosContratosVencendo(token: string): Observable<any> {
+    let headers = this.getHeaders(token);
+
+    return this.http.get(`${this.apiUrl}/card/vencimentosContrato`, {headers});
+  }
+
   private getHeaders(token: string){
     return  new HttpHeaders({
       'Authorization': `Bearer ${token}`

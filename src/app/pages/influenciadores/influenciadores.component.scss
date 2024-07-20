@@ -133,7 +133,15 @@
 }
 
 .list-item:nth-child(1){
-  font-weight: bold;
+  font-weight: 500;
+  color: var(--light-pink);
+}
+
+.list-empty{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
 }
 
 @media(max-width: 1200px){
