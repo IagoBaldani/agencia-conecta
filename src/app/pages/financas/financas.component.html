@@ -17,6 +17,10 @@
         <span class="description"> Total em contratos concluídos {{mesAtual}}/{{anoAtual}} </span>
         <span class="value"> {{utilService.formataValoresEmReais(cardFinancasTotais.totalContratos)}} </span>
       </div>
+      <div class="card">
+        <span class="description"> Total em gastos {{mesAtual}}/{{anoAtual}} </span>
+        <span class="value negative"> {{utilService.formataValoresEmReais(cardFinancasTotais.totalContratos)}} </span>
+      </div>
     </div>
     <form>
       <label for="mesAno"> Pesquisar por mês/ano </label>

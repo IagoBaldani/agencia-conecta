@@ -19,6 +19,7 @@ export class MenuComponent implements OnInit {
 
   isInfluenciadores: boolean = false;
   isServicos: boolean = false;
+  isGastos: boolean = false;
   isFinancas: boolean = false;
   isCalculadora: boolean = false;
 
@@ -30,6 +31,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.isInfluenciadores = this.pagina === 'influenciadores'
     this.isServicos = this.pagina === 'servicos';
+    this.isGastos = this.pagina === 'gastos';
     this.isFinancas = this.pagina === 'financas';
     this.isCalculadora = this.pagina === 'calculadora';
   }

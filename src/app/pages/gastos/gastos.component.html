@@ -1,0 +1,38 @@
+<div class="container">
+  <app-menu pagina="gastos"></app-menu>
+
+  <div class="container-principal">
+    <h2> Gastos (07/24) </h2>
+
+    <div class="box-inputs">
+      <form class="box-inputs-left-part">
+        <input class="data-input" type="month" name="mesAno" id="mesAno" > <!--[(ngModel)]="mesAno"-->
+        <input class="submit-button" type="button" value="PESQUISAR" (click)="pesquisarServicos()">
+      </form>
+
+      <a href="/cadastrar-visualizar-gasto/cadastrar">
+        <span class="button-cadastrar-gasto">
+          CADASTRAR NOVO GASTO
+        </span>
+      </a>
+    </div>
+
+    <div class="grid-cards-gastos">
+      <a href="/cadastrar-visualizar-gasto/visualizar?id=">   <!--*ngFor="let servico of listaServicos"-->
+        <div class="card-gastos">
+          <div class="upper-part">
+            <span> Pagamento da social media</span>
+            <span class="data"> 22/07/2024 </span>
+          </div>
+          <div class="middle-part">
+            <span class="value"> R$500,00 </span>
+          </div>
+          <div class="lower-part">
+              <span class="tag" > Gasto fixo  </span> <!-- *ngIf="servico.usoImagem" -->
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+

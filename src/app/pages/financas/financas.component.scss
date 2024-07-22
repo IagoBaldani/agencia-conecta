@@ -134,6 +134,10 @@ form label{
   font-weight: 700;
 }
 
+.negative{
+  color: var(--light-pink) !important;
+}
+
 @media(max-width: 1000px){
   .container-principal{
     padding-right: 1em;

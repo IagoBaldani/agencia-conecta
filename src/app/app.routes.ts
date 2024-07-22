@@ -11,7 +11,10 @@ import {
   CadastrarVisualizarInfluenciadorComponent
 } from "./pages/cadastrar-visualizar-influenciador/cadastrar-visualizar-influenciador.component";
 import {PaginaNaoEncontradaComponent} from "./pages/pagina-nao-encontrada/pagina-nao-encontrada.component";
-
+import {GastosComponent} from "./pages/gastos/gastos.component";
+import {
+  CadastrarVisualizarGastoComponent
+} from "./pages/cadastrar-visualizar-gasto/cadastrar-visualizar-gasto.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -19,6 +22,8 @@ export const routes: Routes = [
   { path: 'cadastrar-visualizar-influenciador/:tipoPagina', component: CadastrarVisualizarInfluenciadorComponent},
   { path: 'servicos', component: ServicosComponent},
   { path: 'cadastrar-visualizar-servico/:tipoPagina', component: CadastrarVisualizarServicoComponent},
+  { path: 'gastos', component: GastosComponent},
+  { path: 'cadastrar-visualizar-gasto/:tipoPagina', component: CadastrarVisualizarGastoComponent},
   { path: 'financas', component: FinancasComponent},
   { path: 'calculadora', component: CalculadoraComponent},
   { path: '', redirectTo:"/login", pathMatch: 'full'},
