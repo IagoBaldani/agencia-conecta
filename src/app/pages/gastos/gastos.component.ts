@@ -38,7 +38,6 @@ export class GastosComponent implements OnInit{
     this.anoAtual = this.dataAtual.getFullYear() - 2000;
 
     this.getGastos(this.token, this.dataAtual.getMonth() + 1, this.dataAtual.getFullYear());
-
   }
 
   pesquisaPorData(){
@@ -61,7 +60,9 @@ export class GastosComponent implements OnInit{
       this.preencheListaServicos(response.retorno);
 
     }, responseError => {
-      this.utilService.tratarException(responseError);
+      if(responseError.status !== 400){
+        this.utilService.tratarException(responseError);
+      }
     });
   }
 

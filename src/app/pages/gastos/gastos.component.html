@@ -32,6 +32,13 @@
           </div>
         </div>
       </a>
+
+      <div class="card-vazio" *ngIf="listaGastos.length === 0">
+          <span class="material-symbols-rounded">
+              sentiment_satisfied
+          </span>
+          Não há nenhum gasto cadastrado em {{mesAtual}}/{{anoAtual}}
+      </div>
     </div>
   </div>
 </div>

@@ -7,7 +7,7 @@
       <h2 *ngIf="this.tipoPagina === 'visualizar'"> Visualizar gasto</h2>
       <h2 *ngIf="this.tipoPagina === 'alterar'"> Alterar gasto</h2>
     </div>
-    <div class="box-form" *ngIf="this.tipoPagina === 'cadastrar'">
+    <div class="box-form" *ngIf="this.tipoPagina === 'cadastrar' && this.listaGastosFixos.length !== 0">
       <div class="input-row">
         <div class="input-container">
           <label for="preencher-automaticamente"> Preencher automaticamente com gasto fixo</label>

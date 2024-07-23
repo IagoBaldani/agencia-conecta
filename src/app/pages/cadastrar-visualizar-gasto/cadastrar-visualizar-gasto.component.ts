@@ -58,7 +58,9 @@ export class CadastrarVisualizarGastoComponent implements OnInit{
   }
 
   preencherGastoFixo(){
-    this.gasto = this.gastoFixoSelecionado;
+    this.gasto.descricao = this.gastoFixoSelecionado.descricao;
+    this.gasto.valor = this.gastoFixoSelecionado.valor;
+    this.gasto.fixo = this.gastoFixoSelecionado.fixo;
   }
 
   cadastrarGasto(){
@@ -186,7 +188,9 @@ export class CadastrarVisualizarGastoComponent implements OnInit{
       this.preencheListaGastosFixos(response.retorno);
 
     }, responseError => {
-      this.utilService.tratarException(responseError);
+      if(responseError.status !== 400){
+        this.utilService.tratarException(responseError);
+      }
     });
   }
 }
