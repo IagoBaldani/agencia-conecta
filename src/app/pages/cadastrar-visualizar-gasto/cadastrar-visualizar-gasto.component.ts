@@ -4,12 +4,10 @@ import {ActivatedRoute} from "@angular/router";
 import {CommonModule, NgIf} from "@angular/common";
 import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {ServicoModel} from "../../model/servico.model";
+import {GastoModel} from "../../model/gasto.model";
 import {UtilService} from "../../service/util.service";
-import {ServicoApiService} from "../../service/servico-api.service";
-import {InfluenciadorApiService} from "../../service/influenciador-api.service";
-import {InfluenciadorSimplificadoModel} from "../../model/influenciadorSimplificado.model";
 import {ToastService} from "angular-toastify";
+import {GastoApiService} from "../../service/gasto-api.service";
 
 @Component({
   selector: 'app-cadastrar-visualizar-gasto',
@@ -31,151 +29,134 @@ import {ToastService} from "angular-toastify";
 })
 export class CadastrarVisualizarGastoComponent implements OnInit{
   tipoPagina: string | null = null;
-  idServico: string | null = null;
+  idGasto: string | null = null;
   isVisualizar: boolean = false;
   isAlterar: boolean = false;
   isCadastrar: boolean = false;
+  gastoFixoSelecionado: GastoModel = new GastoModel();
 
   token: string = this.utilService.validarToken();
-  servico: ServicoModel = new ServicoModel();
-  listaInfluenciadoresSimplificado: InfluenciadorSimplificadoModel[] = [];
+  gasto: GastoModel = new GastoModel();
+  listaGastosFixos: GastoModel[] =[];
 
   constructor(private route: ActivatedRoute, public utilService: UtilService, private toastService: ToastService,
-              private servicoApiService: ServicoApiService, private influenciadorApiService: InfluenciadorApiService) {}
+              private gastoApiService: GastoApiService) {}
 
   ngOnInit() {
     this.preencheAtributosPagina();
-    this.preencheSelectInfluenciadores();
+    if(this.isCadastrar){
+      this.preencheSelectGastosFixos();
+    }
 
-    if (this.idServico !== null && (this.isVisualizar || this.isAlterar)) {
-      this.getServico(this.token, this.idServico);
+    if (this.idGasto !== null && (this.isVisualizar || this.isAlterar)) {
+      this.getGasto(this.token, this.idGasto);
     }
   }
 
   redirecionaParaPaginaAlterar() {
-    window.location.href = `/cadastrar-visualizar-servico/alterar?id=${this.servico.id}`;
+    window.location.href = `/cadastrar-visualizar-gasto/alterar?id=${this.gasto.id}`;
   }
 
-  cadastrarServico(){
-    if(this.isServicoValido()){
-      console.log(this.servico);
-      this.createServico(this.token, this.servico);
+  preencherGastoFixo(){
+    this.gasto = this.gastoFixoSelecionado;
+  }
+
+  cadastrarGasto(){
+    if(this.isGastoValido()){
+      console.log(this.gasto);
+      this.createGasto(this.token, this.gasto);
 
       setTimeout(()=>{
-        window.location.href = `/servicos`;
+        window.location.href = `/gastos`;
       }, 2000);
     }
   }
 
-  alterarServico(){
-    if(this.isServicoValido()){
-      this.updateServico(this.token, this.servico);
+  alterarGasto(){
+    if(this.isGastoValido()){
+      this.updateGasto(this.token, this.gasto);
 
       setTimeout(()=>{
-        window.location.href = `/cadastrar-visualizar-servico/visualizar?id=${this.servico.id}`;
+        window.location.href = `/cadastrar-visualizar-gasto/visualizar?id=${this.gasto.id}`;
       }, 2000);
     }
   }
 
-  alterarStatus(){
-    this.servico.ativo = !this.servico.ativo;
-    this.updateStatusServico(this.token, this.servico.id);
-  }
-
-  excluirServico(){
-    if(confirm("Você realmente deseja excluir este servico? Este processo é irrecuperável.")){
-      this.deleteServico(this.token, this.servico.id);
+  excluirGasto(){
+    if(confirm("Você realmente deseja excluir este gasto? Este processo é irrecuperável.")){
+      this.deleteGasto(this.token, this.gasto.id);
 
       setTimeout(() => {
-        window.location.href = '/servicos';
+        window.location.href = '/gastos';
       }, 2000)
     }
   }
 
-  private getServico(token: string, id: string){
-    this.servicoApiService.getServicoPorId(token, id).subscribe(response => {
-      this.preencheModelServico(response.retorno);
+  private getGasto(token: string, id: string){
+    this.gastoApiService.getGastoPorId(token, id).subscribe(response => {
+      this.preencheModelGasto(response.retorno);
 
     }, responseError => {
       this.utilService.tratarException(responseError);
     });
   }
 
-  private createServico(token: string, servico: ServicoModel){
-    this.servicoApiService.createServico(token, servico).subscribe(response => {
+  private createGasto(token: string, gasto: GastoModel){
+    this.gastoApiService.createGasto(token, gasto).subscribe(response => {
       this.toastService.success(response.mensagem);
     }, responseError => {
       this.utilService.tratarException(responseError);
     });
   }
 
-  private updateServico(token: string, servico: ServicoModel){
-    this.servicoApiService.updateServico(token, servico).subscribe(response => {
+  private updateGasto(token: string, gasto: GastoModel){
+    this.gastoApiService.updateGasto(token, gasto).subscribe(response => {
       this.toastService.success(response.mensagem);
     }, responseError => {
       this.utilService.tratarException(responseError);
     });
   }
 
-  private updateStatusServico(token: string, id: string){
-    this.servicoApiService.updateStatusServico(token, id).subscribe(response => {
+  private deleteGasto(token: string, id: string){
+    this.gastoApiService.deleteGasto(token, id).subscribe(response => {
       this.toastService.success(response.mensagem);
     }, responseError => {
       this.utilService.tratarException(responseError);
     });
   }
 
-  private deleteServico(token: string, id: string){
-    this.servicoApiService.deleteServico(token, id).subscribe(response => {
-      this.toastService.success(response.mensagem);
-    }, responseError => {
-      this.utilService.tratarException(responseError);
-    });
-  }
-
-  private isServicoValido(){
-    if(this.utilService.verificaVazioOuNulo(this.servico.nomeContratante) ||
-    this.utilService.verificaVazioOuNulo(this.servico.influenciadorId) ||
-    this.utilService.verificaVazioOuNulo(this.servico.celularContratante) ||
-    this.utilService.verificaVazioOuNulo(this.servico.proposta) ||
-    this.utilService.verificaVazioOuNulo(this.servico.dataInicio) ||
-    this.utilService.verificaVazioOuNulo(this.servico.dataFim) ||
-    this.utilService.verificaVazioOuNulo(this.servico.porcentagem) ||
-    this.utilService.verificaVazioOuNulo(this.servico.valor) ||
-    this.utilService.verificaVazioOuNulo(this.servico.descricaoTipoPagamento)){
+  private isGastoValido(){
+    if(this.utilService.verificaVazioOuNulo(this.gasto.descricao) ||
+    this.utilService.verificaVazioOuNulo(this.gasto.valor) ||
+    this.utilService.verificaVazioOuNulo(this.gasto.data)){
       this.toastService.error("Favor informar todos os campos obrigatórios.");
 
       return false;
     }
 
-    if(!this.utilService.verificaVazioOuNulo(this.servico.emailContratante)){
-      if(!this.utilService.isEmailValido(this.servico.emailContratante)){
-        this.toastService.error("Favor informar um email válido.");
-        return false;
-      }
-    }
-
     return true;
   }
 
-  private preencheModelServico(retorno: any){
-    this.servico.id = retorno.id;
-    this.servico.dataFim = retorno.dataFim;
-    this.servico.dataInicio = retorno.dataInicio;
-    this.servico.nomeContratante = retorno.nomeContratante;
-    this.servico.emailContratante = retorno.emailContratante;
-    this.servico.celularContratante = retorno.celularContratante;
-    this.servico.influenciadorId = retorno.influenciador.id;
-    this.servico.nomeInfluenciador = retorno.influenciador.nome;
-    this.servico.proposta = retorno.proposta;
-    this.servico.porcentagem = retorno.porcentagem;
-    this.servico.valor = retorno.valor;
-    this.servico.descricaoTipoPagamento = retorno.descricaoTipoPagamento;
-    this.servico.ativo = retorno.ativo;
-    this.servico.impulsionamento = retorno.impulsionamento;
-    this.servico.usoImagem = retorno.usoImagem;
-    this.servico.exclusividade = retorno.exclusividade;
-    this.servico.declaravel = retorno.declaravel;
+  private preencheModelGasto(retorno: any){
+    this.gasto.id = retorno.id;
+    this.gasto.valor = retorno.valor;
+    this.gasto.data = retorno.data;
+    this.gasto.descricao = retorno.descricao;
+    this.gasto.fixo = retorno.fixo;
+  }
+
+  private preencheListaGastosFixos(listaRetorno: any[]){
+
+    listaRetorno.forEach( gasto => {
+      let gastoFixo = new GastoModel();
+
+      gastoFixo.id = gasto.id;
+      gastoFixo.valor = gasto.valor;
+      gastoFixo.descricao = gasto.descricao;
+      gastoFixo.fixo = gasto.fixo;
+
+      this.listaGastosFixos.push(gastoFixo);
+    })
   }
 
   private preencheAtributosPagina() {
@@ -196,13 +177,13 @@ export class CadastrarVisualizarGastoComponent implements OnInit{
     });
 
     this.route.queryParamMap.subscribe(params => {
-      this.idServico = params.get("id");
+      this.idGasto = params.get("id");
     });
   }
 
-  private preencheSelectInfluenciadores(){
-    this.influenciadorApiService.getInfluenciadoresAtivos(this.token).subscribe(response => {
-      this.utilService.preencheModelInfluenciadorSimplificado(this.listaInfluenciadoresSimplificado, response.retorno);
+  private preencheSelectGastosFixos(){
+    this.gastoApiService.getGastosFixos(this.token).subscribe(response => {
+      this.preencheListaGastosFixos(response.retorno);
 
     }, responseError => {
       this.utilService.tratarException(responseError);

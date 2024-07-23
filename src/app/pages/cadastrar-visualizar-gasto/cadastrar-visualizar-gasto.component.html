@@ -7,15 +7,18 @@
       <h2 *ngIf="this.tipoPagina === 'visualizar'"> Visualizar gasto</h2>
       <h2 *ngIf="this.tipoPagina === 'alterar'"> Alterar gasto</h2>
     </div>
-    <div class="box-form" *ngIf="this.tipoPagina !== 'visualizar'">
+    <div class="box-form" *ngIf="this.tipoPagina === 'cadastrar'">
       <div class="input-row">
         <div class="input-container">
           <label for="preencher-automaticamente"> Preencher automaticamente com gasto fixo</label>
-          <input class="input" type="text" id="preencher-automaticamente"
-                 [(ngModel)]="servico.proposta" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
+          <select id="preencher-automaticamente" name="preencher-automaticamente" class="input" [(ngModel)]="gastoFixoSelecionado" [disabled]="isVisualizar"
+                  [ngClass]="{'disabled': isVisualizar}">
+            <option [ngValue]="null" disabled hidden>Selecione um gasto fixo</option>
+            <option [ngValue]="gastoFixo" *ngFor="let gastoFixo of listaGastosFixos"> {{gastoFixo.descricao}} - {{utilService.formataValoresEmReais(gastoFixo.valor)}}</option>
+          </select>
         </div>
         <div class="button-container-input">
-          <input class="submit-button-input" type="button" value="PREENCHER" (click)="cadastrarServico()">
+         <input class="submit-button-input" type="button" value="PREENCHER" (click)="preencherGastoFixo()">
         </div>
       </div>
     </div>
@@ -25,27 +28,27 @@
         <div class="input-container">
           <label for="descricao"> Descrição (*)</label>
           <input class="input" type="text" id="descricao"
-                 [(ngModel)]="servico.proposta" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
+                 [(ngModel)]="gasto.descricao" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
       <div class="input-row">
         <div class="input-container">
           <label for="data"> Data (*)</label>
           <input class="input" type="date" id="data" placeholder="DD/MM/YYYY"
-                 [(ngModel)]="servico.dataInicio" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
+                 [(ngModel)]="gasto.data" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
         </div>
         <div class="input-container">
           <label for="valor"> Valor em R$ (*)</label>
           <input class="input" type="text" id="valor" placeholder="9999,99" mask="separator,2" thousandSeparator="."
                  decimalMarker=","
-                 [(ngModel)]="servico.valor" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
+                 [(ngModel)]="gasto.valor" [readonly]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
         </div>
       </div>
       <div class="input-row row-checkbox">
         <div class="input-container-checkbox">
           <label>
             <input class="input" type="checkbox" [value]="true"
-                   [(ngModel)]="servico.usoImagem" [disabled]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
+                   [(ngModel)]="gasto.fixo" [disabled]="isVisualizar" [ngClass]="{'disabled': isVisualizar}">
             Gasto fixo
           </label>
         </div>
@@ -55,13 +58,11 @@
     </div>
 
     <div class="button-container">
-      <input *ngIf="isCadastrar" class="submit-button" type="button" value="CADASTRAR" (click)="cadastrarServico()">
-      <input *ngIf="isAlterar" class="submit-button" type="button" value="ALTERAR" (click)="alterarServico()">
+      <input *ngIf="isCadastrar" class="submit-button" type="button" value="CADASTRAR" (click)="cadastrarGasto()">
+      <input *ngIf="isAlterar" class="submit-button" type="button" value="ALTERAR" (click)="alterarGasto()">
 
       <input *ngIf="isVisualizar" class="submit-button" type="button" value="ALTERAR" (click)="redirecionaParaPaginaAlterar()">
-      <input *ngIf="isVisualizar && servico.ativo" class="submit-button finalizar" type="button" value="FINALIZAR" (click)="alterarStatus()">
-      <input *ngIf="isVisualizar && !servico.ativo" class="submit-button finalizar" type="button" value="REATIVAR" (click)="alterarStatus()">
-      <input *ngIf="isVisualizar" class="submit-button excluir" type="button" value="EXCLUIR" (click)="excluirServico()">
+      <input *ngIf="isVisualizar" class="submit-button excluir" type="button" value="EXCLUIR" (click)="excluirGasto()">
     </div>
   </div>
 </div>

@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuComponent} from "../../components/menu/menu.component";
 import {UtilService} from "../../service/util.service";
-import {InfluenciadorApiService} from "../../service/influenciador-api.service";
-import {ServicoApiService} from "../../service/servico-api.service";
 import {ServicoModel} from "../../model/servico.model";
-import {InfluenciadorSimplificadoModel} from "../../model/influenciadorSimplificado.model";
 import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {ToastService} from "angular-toastify";
+import {GastoModel} from "../../model/gasto.model";
+import {GastoApiService} from "../../service/gasto-api.service";
 
 @Component({
   selector: 'app-gastos',
@@ -22,33 +21,43 @@ import {ToastService} from "angular-toastify";
   styleUrl: './gastos.component.scss'
 })
 export class GastosComponent implements OnInit{
-  listaServicos: ServicoModel[] = [];
-  listaInfluenciadores: InfluenciadorSimplificadoModel[] = [];
-  idInfluenciadorSelecionado: number | null = null;
-  statusSelecionado: string | null = null;
+  listaGastos: GastoModel[] = [];
+  mesAno: string = '';
+  mesAtual: number = 0;
+  anoAtual: number = 0;
 
+  dataAtual: Date = new Date();
   private token = this.utilService.validarToken();
 
   constructor(public utilService: UtilService, private toastService: ToastService,
-              private influenciadorApiService: InfluenciadorApiService, private servicoApiService: ServicoApiService) {
+              private gastoApiService: GastoApiService) {
   }
 
   ngOnInit(){
-    this.getServicos(this.token, "true", null);
-    this.preencheSelectInfluenciadores();
+    this.mesAtual = this.dataAtual.getMonth() + 1;
+    this.anoAtual = this.dataAtual.getFullYear() - 2000;
+
+    this.getGastos(this.token, this.dataAtual.getMonth() + 1, this.dataAtual.getFullYear());
+
   }
 
-  pesquisarServicos(){
-    if(this.statusSelecionado === null && this.idInfluenciadorSelecionado === null){
-      this.toastService.error("Favor selecionar uma das opções para realizar a pesquisa de serviços.");
+  pesquisaPorData(){
+    if(this.mesAno !== '' && this.mesAno !== null){
+      this.anoAtual = Number(this.mesAno.split("-").at(0));
+      this.mesAtual = Number(this.mesAno.split("-").at(1));
+
+      this.getGastos(this.token, this.mesAtual, this.anoAtual);
+
+      this.anoAtual -= 2000;
     }
     else{
-      this.getServicos(this.token, this.statusSelecionado, this.idInfluenciadorSelecionado);
+      this.toastService.error("Por favor informe o mês e o ano desejado.");
     }
+
   }
 
-  private getServicos(token: string, ativos: string | null, idInfluenciador: number | null){
-    this.servicoApiService.getServicos(token, ativos, idInfluenciador).subscribe(response => {
+  private getGastos(token: string, mes: number, ano: number){
+    this.gastoApiService.getGastosPorMesAno(token, mes, ano).subscribe(response => {
       this.preencheListaServicos(response.retorno);
 
     }, responseError => {
@@ -57,39 +66,18 @@ export class GastosComponent implements OnInit{
   }
 
   private preencheListaServicos(listaRetorno: any[]){
-    this.listaServicos = [];
+    this.listaGastos = [];
 
     listaRetorno.forEach( retorno => {
-      let servico: ServicoModel = new ServicoModel();
+      let gasto: GastoModel = new GastoModel();
 
-      servico.id = retorno.id;
-      servico.dataFim = retorno.dataFim;
-      servico.dataInicio = retorno.dataInicio;
-      servico.nomeContratante = retorno.nomeContratante;
-      servico.emailContratante = retorno.emailContratante;
-      servico.celularContratante = retorno.celularContratante;
-      servico.influenciadorId = retorno.influenciador.id;
-      servico.nomeInfluenciador = retorno.influenciador.nome;
-      servico.proposta = retorno.proposta;
-      servico.porcentagem = retorno.porcentagem;
-      servico.valor = retorno.valor;
-      servico.descricaoTipoPagamento = retorno.descricaoTipoPagamento;
-      servico.ativo = retorno.ativo;
-      servico.impulsionamento = retorno.impulsionamento;
-      servico.usoImagem = retorno.usoImagem;
-      servico.exclusividade = retorno.exclusividade;
-      servico.declaravel = retorno.declaravel;
+      gasto.id = retorno.id;
+      gasto.valor = retorno.valor;
+      gasto.data = retorno.data;
+      gasto.descricao = retorno.descricao;
+      gasto.fixo = retorno.fixo;
 
-      this.listaServicos.push(servico);
-    });
-  }
-
-  private preencheSelectInfluenciadores(){
-    this.influenciadorApiService.getInfluenciadoresAtivos(this.token).subscribe(response => {
-      this.utilService.preencheModelInfluenciadorSimplificado(this.listaInfluenciadores, response.retorno);
-
-    }, responseError => {
-      this.utilService.tratarException(responseError);
+      this.listaGastos.push(gasto);
     });
   }
 }

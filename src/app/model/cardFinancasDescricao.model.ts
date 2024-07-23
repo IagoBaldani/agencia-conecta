@@ -3,7 +3,6 @@ export class CardFinancasDescricaoModel{
   valorAcessor: number;
   valorInfluenciador: number;
   qtdServicos: number;
-
   constructor() {
     this.nomeInfluenciador = 0;
     this.valorAcessor = 0;

@@ -2,12 +2,12 @@
   <app-menu pagina="gastos"></app-menu>
 
   <div class="container-principal">
-    <h2> Gastos (07/24) </h2>
+    <h2> Gastos {{mesAtual}}/{{anoAtual}} </h2>
 
     <div class="box-inputs">
       <form class="box-inputs-left-part">
-        <input class="data-input" type="month" name="mesAno" id="mesAno" > <!--[(ngModel)]="mesAno"-->
-        <input class="submit-button" type="button" value="PESQUISAR" (click)="pesquisarServicos()">
+        <input class="data-input" type="month" name="mesAno" id="mesAno" [(ngModel)]="mesAno">
+        <input class="submit-button" type="button" value="PESQUISAR" (click)="pesquisaPorData()">
       </form>
 
       <a href="/cadastrar-visualizar-gasto/cadastrar">
@@ -18,17 +18,17 @@
     </div>
 
     <div class="grid-cards-gastos">
-      <a href="/cadastrar-visualizar-gasto/visualizar?id=">   <!--*ngFor="let servico of listaServicos"-->
+      <a href="/cadastrar-visualizar-gasto/visualizar?id={{gasto.id}}" *ngFor="let gasto of listaGastos">
         <div class="card-gastos">
           <div class="upper-part">
-            <span> Pagamento da social media</span>
-            <span class="data"> 22/07/2024 </span>
+            <span> {{gasto.descricao}}</span>
+            <span class="data"> {{utilService.formataData(gasto.data)}} </span>
           </div>
           <div class="middle-part">
-            <span class="value"> R$500,00 </span>
+            <span class="value"> {{utilService.formataValoresEmReais(gasto.valor)}} </span>
           </div>
           <div class="lower-part">
-              <span class="tag" > Gasto fixo  </span> <!-- *ngIf="servico.usoImagem" -->
+              <span class="tag" *ngIf="gasto.fixo" > Gasto fixo  </span>
           </div>
         </div>
       </a>
