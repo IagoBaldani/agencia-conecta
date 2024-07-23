@@ -108,6 +108,11 @@
     gap: 1em;
   }
 
+  .button-container-input{
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
   .row-checkbox{
     gap: 1em !important;
   }
