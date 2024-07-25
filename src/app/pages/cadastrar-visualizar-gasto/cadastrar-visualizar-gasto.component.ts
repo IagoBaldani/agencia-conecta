@@ -186,11 +186,8 @@ export class CadastrarVisualizarGastoComponent implements OnInit{
   private preencheSelectGastosFixos(){
     this.gastoApiService.getGastosFixos(this.token).subscribe(response => {
       this.preencheListaGastosFixos(response.retorno);
-
     }, responseError => {
-      if(responseError.status !== 400){
-        this.utilService.tratarException(responseError);
-      }
+      this.utilService.tratarException(responseError);
     });
   }
 }

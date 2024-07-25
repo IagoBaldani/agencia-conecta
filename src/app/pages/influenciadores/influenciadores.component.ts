@@ -24,17 +24,17 @@ export class InfluenciadoresComponent implements OnInit {
   listaProximosAniversarios: CardDatasModel[] = [];
   listaProximosContratosVencendo: CardDatasModel[] = [];
 
+  private token = this.utilService.validarToken();
+
   constructor(public utilService: UtilService, private cardApiService: CardApiService,
               private influenciadorApiService: InfluenciadorApiService, private toastService: ToastService) {
   }
 
   ngOnInit() {
-    let token = this.utilService.validarToken();
-
-    this.getProximosAniversarios(token);
-    this.getProximosContratosVencendo(token);
-    this.getCardInfluenciadores(token);
-    this.getInfluenciadores(token);
+    this.getProximosAniversarios(this.token);
+    this.getProximosContratosVencendo(this.token);
+    this.getCardInfluenciadores(this.token);
+    this.getInfluenciadores(this.token);
   }
 
   private getCardInfluenciadores(token: string) {

@@ -60,9 +60,7 @@ export class GastosComponent implements OnInit{
       this.preencheListaServicos(response.retorno);
 
     }, responseError => {
-      if(responseError.status !== 400){
-        this.utilService.tratarException(responseError);
-      }
+      this.utilService.tratarException(responseError);
     });
   }
 
